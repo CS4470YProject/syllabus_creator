@@ -3,7 +3,7 @@ rvm:
  - "2.2.3"
 # - rbx
 before_script:
- - mysql -e 'create databse syllabus_creator_test;' -uroot
+ - mysql -e 'create database syllabus_creator_test;' -uroot
 
 script:
  - bundle exec rake db:test:prepare
