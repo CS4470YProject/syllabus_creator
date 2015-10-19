@@ -1,11 +1,10 @@
 language: ruby
 rvm:
  - "2.2.3"
-# - rbx
+
 before_script:
  - mysql -e 'create database syllabus_creator_test;' -uroot
 
 script:
  - bundle exec rake db:test:prepare
-# uncomment this line if your project needs to run something other than `rake`:
-# script: bundle exec rspec spec
+ - bundle exec rspec spec
