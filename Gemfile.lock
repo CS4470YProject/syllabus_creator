@@ -119,6 +119,7 @@ GEM
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
+    railroady (1.4.0)
     rails (4.2.3)
       actionmailer (= 4.2.3)
       actionpack (= 4.2.3)
@@ -234,6 +235,7 @@ DEPENDENCIES
   jquery-rails
   jquery-slick-rails
   mysql2
+  railroady
   rails (= 4.2.3)
   rspec-rails (~> 3.2.2)
   sass-rails (~> 5.0.4)
