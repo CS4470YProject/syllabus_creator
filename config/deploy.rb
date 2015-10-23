@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'syllabus_creator'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :repo_url, 'git@github.com:CS4470YProject/syllabus_creator.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -34,6 +34,10 @@ set :repoistory, 'git@github.com:CS4470YProject/syllabus_creator.git'
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+
+set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_ruby, File.read('.rbenv-version').strip
+
 
 set :pty, true
 

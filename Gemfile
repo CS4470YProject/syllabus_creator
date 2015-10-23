@@ -30,10 +30,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
-gem 'capistrano', '~> 3.4.0'
-gem 'capistrano-bundler'
-gem 'capistrano-rbenv'
+
+
 
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-sass'
@@ -42,7 +40,16 @@ gem 'font-awesome-sass', '~> 4.3.1'
 gem 'cancancan', '~> 1.10.1'
 gem 'jquery-slick-rails'
 
-
+group :development do
+  gem 'capistrano-rails', '~> 1.1.3'
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-rbenv', '~> 2.0.3'
+  gem 'capistrano-unicorn-nginx', '~> 3.2.0'
+  gem 'capistrano-bundler', '~> 1.1.4'
+  gem 'capistrano-safe-deploy-to', '~> 1.1.1'
+  gem 'capistrano-rbenv-install', '~> 1.2.0'
+  gem 'capistrano-rails-console'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
