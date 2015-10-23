@@ -49,6 +49,7 @@ group :development do
   gem 'capistrano-safe-deploy-to', '~> 1.1.1'
   gem 'capistrano-rbenv-install', '~> 1.2.0'
   gem 'capistrano-rails-console'
+  gem 'railroady'
 end
 
 group :development, :test do
