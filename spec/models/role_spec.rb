@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Role, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'Relationships' do
+    it { should have_many(:user_roles) }
+  end
 end
