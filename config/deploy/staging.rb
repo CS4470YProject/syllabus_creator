@@ -6,11 +6,21 @@
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
-server '52.91.190.52', user: 'ubuntu', roles: %w(app db web)
+set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
+
+
+server '52.91.190.52', user: 'ubuntu', roles: %w(app db web), primary: true
 
 set :rails_env, 'staging'
 set :branch, ENV.fetch('branch', 'master')
 
+set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
+
+set :unicorn_worker_count, 5
+set :rails_env, :staging
+
+
+set :enable_ssl, false
 
 # role-based syntax
 # ==================

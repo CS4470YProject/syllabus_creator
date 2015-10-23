@@ -36,7 +36,6 @@ set :tests, []
 # for details of operations
 set(:config_files, %w(
   nginx.conf
-  database.example.yml
   log_rotation
   monit
   unicorn.rb
