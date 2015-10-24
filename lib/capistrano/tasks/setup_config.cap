@@ -4,7 +4,8 @@ namespace :deploy do
       # make the config dir
       execute :mkdir, "-p #{shared_path}/config"
       full_app_name = fetch(:full_app_name)
-
+      puts "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\"
+      puts "#{shared_path}"
       # config files to be uploaded to shared/config, see the
       # definition of smart_template for details of operation.
       # Essentially looks for #{filename}.erb in deploy/#{full_app_name}/
@@ -13,6 +14,7 @@ namespace :deploy do
       # set in the stage files
       config_files = fetch(:config_files)
       config_files.each do |file|
+        puts file
         smart_template file
       end
 
