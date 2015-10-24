@@ -50,5 +50,7 @@ bower.json
 # Ignore pow environment settings
 .powenv
 
-# Ignore docs
+# Ignore pem file
+config/cs4470.pem
+
 doc/*
