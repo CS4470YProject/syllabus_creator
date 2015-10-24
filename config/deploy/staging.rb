@@ -8,7 +8,7 @@
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
 
-
+set :server_name, 'cs4470'
 server '52.91.190.52', user: 'ubuntu', roles: %w(app db web), primary: true
 
 set :rails_env, 'staging'
