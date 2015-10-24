@@ -32,7 +32,7 @@ set :tests, []
 
 
 # which config files should be copied by deploy:setup_config
-# see documentation in lib/capistrano/tasks/setup_config.cap
+# see documentation in lib/capistrano/tasks/setup_configs.cap
 # for details of operations
 set(:config_files, %w(nginx.conf log_rotation monit unicorn.rb unicorn_init.sh))
 
@@ -71,6 +71,7 @@ set(:symlinks, [
                  }
              ])
 
+
 # this:
 # http://www.capistranorb.com/documentation/getting-started/flow/
 # is worth reading for a quick overview of what tasks are called
@@ -101,4 +102,5 @@ namespace :deploy do
   # automatically.
   after 'deploy:publishing', 'deploy:restart'
 end
+
 
