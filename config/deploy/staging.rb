@@ -14,7 +14,7 @@ server '52.91.190.52', user: 'ubuntu', roles: %w(app db web), primary: true
 set :rails_env, 'staging'
 set :branch, ENV.fetch('branch', 'master')
 
-set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
+set :deploy_to, "/home/#{fetch(:deploy_user)}/rails/#{fetch(:full_app_name)}"
 
 set :unicorn_worker_count, 5
 set :rails_env, :staging
