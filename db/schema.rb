@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151019142047) do
+ActiveRecord::Schema.define(version: 20151023182555) do
+
+  create_table "element_rules", force: :cascade do |t|
+    t.integer  "element_id", limit: 4
+    t.integer  "rule_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "element_rules", ["element_id"], name: "index_element_rules_on_element_id", using: :btree
+  add_index "element_rules", ["rule_id"], name: "index_element_rules_on_rule_id", using: :btree
 
   create_table "elements", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -40,6 +50,11 @@ ActiveRecord::Schema.define(version: 20151019142047) do
     t.integer  "role_type",  limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+  end
+
+  create_table "rules", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_roles", force: :cascade do |t|

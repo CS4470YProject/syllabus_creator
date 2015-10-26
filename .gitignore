@@ -53,5 +53,4 @@ bower.json
 # Ignore pem file
 config/cs4470.pem
 
-# Ignore docs
 doc/*
