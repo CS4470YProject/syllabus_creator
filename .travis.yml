@@ -4,6 +4,7 @@ rvm:
 
 before_script:
  - mysql -e 'create database syllabus_creator_test;' -uroot
+ - cp config/examples/secrets.yml config/secrets.yml
 
 script:
  - bundle exec rake db:test:prepare
