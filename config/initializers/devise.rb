@@ -7,7 +7,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'b4165a260823db5a33f09912187c1b521ea76fc96e59c4060162adb2a17c323e1c74c3e808524ea22d5bba291fe0a6d10a36e2282c47679e438d6d4ab3e9286a'
-  config.secret_key = 'cba4dd0ad093b5369aa78febfe9e7c42078d496d4e3c489956958f5319950c46bb85d3497af682af054dd4524d6525b46e7e3c82d3996967e7f7a741eb5e7988'
+
 
 
 
