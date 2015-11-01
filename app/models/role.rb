@@ -10,4 +10,5 @@ class Role < ActiveRecord::Base
   def instructor?
     role_type == 'instructor'
   end
+
 end
