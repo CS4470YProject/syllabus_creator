@@ -1,0 +1,3 @@
+<% @outlines.each do |outline| %>
+    <%= link_to outline_path(outline) do %> <%= outline.course.code %> <% end %>
+<% end %>

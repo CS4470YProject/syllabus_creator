@@ -39,6 +39,7 @@ gem 'arel-helpers', '~> 2.1.0'
 gem 'font-awesome-sass', '~> 4.3.1'
 gem 'cancancan', '~> 1.10.1'
 gem 'jquery-slick-rails'
+gem 'devise'
 
 group :development do
   gem 'capistrano-rails', '~> 1.1.3'
