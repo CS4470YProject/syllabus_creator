@@ -29,10 +29,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 gem 'unicorn'
 
-# Use Capistrano for deployment
-
-
-
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-sass'
 gem 'arel-helpers', '~> 2.1.0'
@@ -41,6 +37,8 @@ gem 'cancancan', '~> 1.10.1'
 gem 'jquery-slick-rails'
 gem 'devise'
 
+gem 'chosen-rails'
+gem 'compass-rails', github: 'Compass/compass-rails', branch: 'master'
 group :development do
   gem 'capistrano-rails', '~> 1.1.3'
   gem 'capistrano', '~> 3.4.0'

@@ -12,14 +12,18 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    roles.where(role_type: 0).size > 0
+    role_types.include?('admin')
   end
 
   def instructor?
-    roles.where(role_type: 1).size > 0
+    role_types.include?('instructor')
   end
 
   def guest?
     false
+  end
+
+  def role_types
+    roles.collect { |x| x.role_type }
   end
 end
