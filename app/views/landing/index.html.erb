@@ -1,6 +1,4 @@
-TEST PAGE
 
-<h4> WOOOO  </h4>
 <% if @user.guest? %>
   <%= link_to new_user_session_path do %> Login <% end %>
 <% else %>
@@ -8,8 +6,13 @@ TEST PAGE
 <% end %>
 
 <div>
-  <%= link_to outlines_path, class: 'btn btn-primary' do %> <span class="fa fa-thumbs-up"></span> VIEW SUM OUTLINES <% end %>
+  <%= link_to outlines_path, class: 'btn btn-primary' do %> <span class="fa fa-thumbs-up"></span> VIEW OUTLINES <% end %>
 </div>
+<% if can? :create, Outline %>
+  <div>
+    <%= render 'shared/new_outline_modal', courses: @courses %>
+  </div>
+<% end %>
 
 
 
