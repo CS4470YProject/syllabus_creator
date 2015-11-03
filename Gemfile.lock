@@ -262,28 +262,28 @@ PLATFORMS
 
 DEPENDENCIES
   arel-helpers (~> 2.1.0)
-  bootstrap-sass
+  bootstrap-sass (~> 3.2.0.2)
   byebug
   cancancan (~> 1.10.1)
   capistrano (~> 3.4.0)
   capistrano-bundler (~> 1.1.4)
   capistrano-rails (~> 1.1.3)
-  capistrano-rails-console
+  capistrano-rails-console (~> 1.0.0)
   capistrano-rbenv (~> 2.0.3)
   capistrano-rbenv-install (~> 1.2.0)
   capistrano-safe-deploy-to (~> 1.1.1)
   capistrano-unicorn-nginx (~> 3.2.0)
-  chosen-rails
+  chosen-rails (~> 1.4.1)
   coffee-rails (~> 4.1.0)
   compass-rails!
-  devise
+  devise (~> 3.5.2)
   factory_girl_rails (~> 4.5)
   font-awesome-sass (~> 4.3.1)
   jbuilder (~> 2.0)
-  jquery-rails
-  jquery-slick-rails
-  mysql2
-  railroady
+  jquery-rails (~> 4.0.5)
+  jquery-slick-rails (~> 1.5.6)
+  mysql2 (~> 0.3.20)
+  railroady (~> 1.4.0)
   rails (= 4.2.3)
   rspec-rails (~> 3.2.2)
   sass-rails (~> 5.0.4)
@@ -291,9 +291,9 @@ DEPENDENCIES
   shoulda-matchers (~> 2.8.0)
   spring
   turbolinks
-  twitter-bootstrap-rails
+  twitter-bootstrap-rails (~> 3.2.0)
   uglifier (>= 1.3.0)
-  unicorn
+  unicorn (~> 4.9.0)
   web-console (~> 2.0)
 
 BUNDLED WITH

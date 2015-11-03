@@ -1,0 +1,27 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: $light_gray;
+}
+
+.header {
+  height: 115px;
+  position: relative;
+}
+
+.footer {
+  height: 75px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.header_text {
+  position: absolute;
+  right: 5px;
+}
+
+.login_text {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
