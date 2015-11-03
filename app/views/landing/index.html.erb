@@ -1,10 +1,4 @@
 
-<% if @user.guest? %>
-  <%= link_to new_user_session_path do %> Login <% end %>
-<% else %>
-  <%= link_to destroy_user_session_path, method: :delete do %> Log Out <% end %>
-<% end %>
-
 <div>
   <%= link_to outlines_path, class: 'btn btn-primary' do %> <span class="fa fa-thumbs-up"></span> VIEW OUTLINES <% end %>
 </div>
@@ -13,8 +7,4 @@
     <%= render 'shared/new_outline_modal', courses: @courses %>
   </div>
 <% end %>
-
-
-
-<%= @user.email %>
 

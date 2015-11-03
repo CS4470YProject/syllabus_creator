@@ -38,12 +38,9 @@ $light_gray: #dcdcdc;
 /* FONTS */
 
 // Font Sizes
-.font_xlarge { font-size: 48px; }
-.font_large { font-size: 36px; }
-.font_medium { font-size: 24px; }
-.font_small { font-size: 14px; }
-.fond_xsmall {font-size: 10px; }
-
+@for $i from 6 through 60 {
+  .font_#{$i} { font-size: #{$i}px; }
+}
 // Default Fonts
 $font-family-base: 'Open Sans', sans-serif;
 $font-family-sans-serif: $font-family-base;

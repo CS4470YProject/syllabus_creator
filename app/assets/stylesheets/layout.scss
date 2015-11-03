@@ -5,6 +5,7 @@ body {
 
 .header {
   height: 115px;
+  position: relative;
 }
 
 .footer {
@@ -12,4 +13,15 @@ body {
   width: 100%;
   position: absolute;
   bottom: 0;
+}
+
+.header_text {
+  position: absolute;
+  right: 5px;
+}
+
+.login_text {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 }
