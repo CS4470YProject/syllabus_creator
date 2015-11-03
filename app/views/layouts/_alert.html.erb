@@ -1,10 +1,16 @@
 <div class="container-fluid">
   <div class="row">
     <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
+      <div class="alert alert-success">
+        <%= notice %>
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      </div>
     <% end %>
     <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
+      <div class="alert alert-danger">
+        <%= alert %>
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      </div>
     <% end %>
   </div>
 </div>
