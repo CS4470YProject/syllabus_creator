@@ -1,46 +1,47 @@
 /* COLOURS */
 
 /* Western Colours */
-$western_purple: #4F2683;
-$western_gray: #807F83;
+$western-purple: #4F2683;
+$western-gray: #807F83;
 // Colour Classes
-.western_purple{ color: $western_purple; }
-.western_gray{ color: $western_gray; }
+.western-purple{ color: $western-purple; }
+.western-gray{ color: $western-gray; }
 // Background Colour Classes
-.western_purple_bg{ background-color: $western_purple; }
-.western_gray_bg{ background-color: $western_gray; }
+.western-purple-bg{ background-color: $western-purple; }
+.western-gray-bg{ background-color: $western-gray; }
 // Border Colour Classes
-.western_purple_border{ border-color: $western_purple !important; }
-.western_gray_border{ border-color: $western_gray !important; }
+.western-purple-border{ border-color: $western-purple !important; }
+.western-gray-border{ border-color: $western-gray !important; }
 
 
 /* Other Colours */
 $white: #F6EBEB;
 $black: #000000;
-$light_gray: #ebebeb;
+$light-gray: #ebebeb;
 
 
 // Colour Classes
-.white { color: $white; }
+.white { color: $white !important; }
 
 
 // Background Colour Classes
 
-.white_bg { background-color: $white; }
-.black_bg { background-color: $black; }
+.white-bg { background-color: $white; }
+.black-bg { background-color: $black; }
 
 
 // Border Colour Classes
-.white_border { border-color: $white; }
-.black_border { border-color: $black; }
+.white-border { border-color: $white; }
+.black-border { border-color: $black; }
 
 
 /* FONTS */
 
 // Font Sizes
 @for $i from 6 through 60 {
-  .font_#{$i} { font-size: #{$i}px; }
+  .font-#{$i} { font-size: #{$i}px; }
 }
+
 // Default Fonts
 $font-family-base: 'Open Sans', sans-serif;
 $font-family-sans-serif: $font-family-base;

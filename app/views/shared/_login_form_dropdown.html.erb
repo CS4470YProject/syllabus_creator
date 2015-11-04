@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.label :email, 'E-Mail Address' %>
+      <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-8">
+        <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.label :remember_me, '', class: 'checkbox-inline' do %>
+              <%= f.check_box :remember_me %> <span class="checkbox-label"> Remember me </span>
+            <% end %>
+          </div>
+        <% end -%>
+        <%= link_to 'Forgot your password?', new_password_path(resource_name) %>
+      </div>
+      <div class="col-md-4" id="login-button">
+        <%= f.button 'Log in', class: 'btn btn-success', id: 'login-button' %>
+      </div>
+    </div>
+
+  <% end %>
+</div>
