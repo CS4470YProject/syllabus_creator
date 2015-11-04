@@ -1,6 +1,12 @@
+html {
+  height: 100%;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: $light_gray;
+  height: 100%;
+  background-color: $western_gray;
+ // background-image: url(https://upload.wikimedia.org/wikipedia/en/e/ed/Nyan_cat_250px_frame.PNG); ///uncomment for a good time
 }
 
 .header {
@@ -10,7 +16,7 @@ body {
 
 .footer {
   height: 75px;
-  width: 100%;
+  width: 80%;
   position: absolute;
   bottom: 0;
 }
@@ -24,4 +30,32 @@ body {
   position: absolute;
   bottom: 5px;
   right: 5px;
+}
+
+.btn-primary {
+  background-color: $western_purple;
+  border-color: $western_purple;
+}
+.btn-primary:focus,
+.btn-primary.focus {
+  color: $white;
+  background-color: #532e90;
+  border-color: #241540;
+}
+
+.btn-primary:hover {
+  color: $white;
+  background-color: #3f2973;
+  border-color: #3a2e74;
+}
+
+.body {
+  width: 80%;
+  min-height: 100%;
+  margin: 0 auto;
+  background-color: $light_gray;
+}
+
+.checkbox-label {
+  vertical-align: -2px;
 }

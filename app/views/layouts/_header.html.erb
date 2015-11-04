@@ -6,7 +6,7 @@
     <%= render 'shared/login_form' %>
   <% else %>
     <div class="login_text white font_16">
-      Logged in as: <%= current_user.name %> <br>
+      <span class="fa fa-user"></span>&nbspLogged in as: <%= current_user.name %> <br>
       <%= link_to destroy_user_session_path, method: :delete, class: 'pull-right' do %> Log Out <% end %>
     </div>
   <% end %>
