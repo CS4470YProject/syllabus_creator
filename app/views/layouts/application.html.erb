@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SyllabusCreator</title>
+  <title>Syllabus Creator</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'layouts/header' %>
-<%= render 'layouts/alert' %>
-<%= yield %>
-<%= render 'layouts/footer' %>
+  <div class="body">
+    <%= render 'layouts/nav' %>
+    <%= render 'layouts/alert' %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+  </div>
 </body>
 </html>

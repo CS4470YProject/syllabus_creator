@@ -1,6 +1,41 @@
+html {
+  height: 100%;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: $light_gray;
+  height: 100%;
+  background-color: $western_gray;
+ // background-image: url(https://upload.wikimedia.org/wikipedia/en/e/ed/Nyan_cat_250px_frame.PNG); ///uncomment for a good time
+}
+
+//h1 {
+//  font-size: 2em;
+//  font-size: 3vw;
+//}
+//
+//h2 {
+//  font-size: 1.5em;
+//  font-size: 2vw;
+//}
+//
+//h3 {
+//  font-size: 1.25em;
+//  font-size: 1.5vw;
+//}
+//
+//h4 {
+//  font-size: 1em;
+//  font-size: 1vw;
+//}
+
+//.font-small {
+//  font-size: 0.75em;
+//  font-size: 0.75vw;
+//}
+
+.font-medium {
+  font-size: 1.2vmax;
 }
 
 .header {
@@ -10,18 +45,142 @@ body {
 
 .footer {
   height: 75px;
-  width: 100%;
+  width: 80%;
   position: absolute;
   bottom: 0;
 }
 
-.header_text {
+.header-text {
   position: absolute;
-  right: 5px;
+  left: 10px;
 }
 
-.login_text {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
+.header-image {
+  width: auto;
+  height: auto;
+  max-width: 100%;
 }
+
+.login-text {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.body {
+  width: 80%;
+  min-height: 100%;
+  margin: 0 auto;
+  background-color: $light_gray;
+}
+
+.checkbox-label {
+  vertical-align: -2px;
+}
+
+.navbar-nav > li > a, .navbar-brand {
+  height: 100px;
+}
+.navbar {
+  min-height:28px !important;
+  border-radius: 0 !important;
+}
+
+#login-menu {
+  min-width: 300px;
+}
+.nav > li.dropdown.open:hover > a,
+.nav > li.dropdown.open > a
+{
+  color: $western-purple !important;
+}
+
+.nav > li.dropdown:hover > a
+{
+  background-color: $western-purple-dark;
+}
+
+
+#western-logo {
+  width: 50%;
+  height: 50%;
+}
+
+#log-out-link {
+  text-align: center;
+}
+
+#login-page {
+  width: 40%;
+  float: none;
+  margin: 0px auto;
+}
+
+/* Western Coloured Button */
+
+.btn {
+  border-radius: 0px;
+}
+
+.btn-western {
+  color: #ffffff;
+  background-color: $western-purple;
+  border-color: $western-purple;
+}
+.btn-western:focus,
+.btn-western.focus {
+  color: $white;
+  background-color: $western-purple-light;
+  border-color: $western-purple-darker;
+}
+
+.btn-western:hover {
+  color: $white;
+  background-color: $western-purple-dark;
+  border-color: $western-purple-dark;
+}
+
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: $western-purple-dark;
+  border-color: $western-purple-dark;
+}
+
+.btn-western:active:hover,
+.btn-western.active:hover,
+.open > .dropdown-toggle.btn-western:hover,
+.btn-western:active:focus,
+.btn-western.active:focus,
+.open > .dropdown-toggle.btn-western:focus,
+.btn-western:active.focus,
+.btn-western.active.focus,
+.open > .dropdown-toggle.btn-western.focus {
+  color: #fff;
+  background-color: $western-purple-dark;
+  border-color: $western-purple-darker;
+}
+.btn-western:active,
+.btn-western.active,
+.open > .dropdown-toggle.btn-western {
+  background-image: none;
+}
+.btn-western.disabled:hover,
+.btn-western[disabled]:hover,
+fieldset[disabled] .btn-western:hover,
+.btn-western.disabled:focus,
+.btn-western[disabled]:focus,
+fieldset[disabled] .btn-western:focus,
+.btn-western.disabled.focus,
+.btn-western[disabled].focus,
+fieldset[disabled] .btn-western.focus {
+  background-color: $western-purple;
+  border-color: $western-purple;
+}
+.btn-western .badge {
+  color: $western-purple;
+  background-color: #fff;
+}
+
+/* END Western Button */
