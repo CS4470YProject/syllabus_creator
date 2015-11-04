@@ -13,7 +13,7 @@
       </a>
       <br>
       <span class="white font-medium header-text">
-        Syllabus Creator
+         <a href="<%= root_path %>" class="white"> Syllabus Creator </a>
       </span>
     </div>
 
@@ -28,12 +28,21 @@
             <li><a href="#">Option 3</a></li>
           </ul>
         </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
-          <ul class="dropdown-menu" id="login-menu">
-            <%= render 'shared/login_form_dropdown' %>
-          </ul>
-        </li>
+        <% if current_user.guest? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
+            <ul class="dropdown-menu" id="login-menu">
+              <%= render 'shared/login_form' %>
+            </ul>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete, class: 'white pull-right', id: 'log-out-link' do %>
+              <span class="fa fa-user"></span>&nbsp<%= current_user.name %><br><br>
+              <span>Log Out</span>
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

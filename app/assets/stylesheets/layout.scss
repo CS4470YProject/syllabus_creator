@@ -89,15 +89,31 @@ body {
 #login-menu {
   min-width: 300px;
 }
-
-.nav > li.dropdown.open > a,
+.nav > li.dropdown.open:hover > a,
+.nav > li.dropdown.open > a
 {
   color: $western-purple !important;
 }
 
+.nav > li.dropdown:hover > a
+{
+  background-color: $western-purple-dark;
+}
+
+
 #western-logo {
   width: 50%;
   height: 50%;
+}
+
+#log-out-link {
+  text-align: center;
+}
+
+#login-page {
+  width: 40%;
+  float: none;
+  margin: 0px auto;
 }
 
 /* Western Coloured Button */
@@ -114,22 +130,22 @@ body {
 .btn-western:focus,
 .btn-western.focus {
   color: $white;
-  background-color: #532e90;
-  border-color: #241540;
+  background-color: $western-purple-light;
+  border-color: $western-purple-darker;
 }
 
 .btn-western:hover {
   color: $white;
-  background-color: #3f2973;
-  border-color: #3a2e74;
+  background-color: $western-purple-dark;
+  border-color: $western-purple-dark;
 }
 
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #fff;
-  background-color: #3f2973;
-  border-color: #3a2e74;
+  background-color: $western-purple-dark;
+  border-color: $western-purple-dark;
 }
 
 .btn-western:active:hover,
@@ -142,8 +158,8 @@ body {
 .btn-western.active.focus,
 .open > .dropdown-toggle.btn-western.focus {
   color: #fff;
-  background-color: #3a2e74;
-  border-color: #241540;
+  background-color: $western-purple-dark;
+  border-color: $western-purple-darker;
 }
 .btn-western:active,
 .btn-western.active,

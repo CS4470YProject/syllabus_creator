@@ -3,6 +3,12 @@
 /* Western Colours */
 $western-purple: #4F2683;
 $western-gray: #807F83;
+$western-purple-dark: #3f2973;
+$western-purple-darker: #241540;
+$western-purple-light: #532e90;
+
+
+
 // Colour Classes
 .western-purple{ color: $western-purple; }
 .western-gray{ color: $western-gray; }
@@ -15,6 +21,7 @@ $western-gray: #807F83;
 
 
 /* Other Colours */
+$pure-white: #fff;
 $white: #F6EBEB;
 $black: #000000;
 $light-gray: #ebebeb;
@@ -25,7 +32,7 @@ $light-gray: #ebebeb;
 
 
 // Background Colour Classes
-
+.pure-white-bg { background-color: $pure-white }
 .white-bg { background-color: $white; }
 .black-bg { background-color: $black; }
 
