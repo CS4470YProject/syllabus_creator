@@ -21,10 +21,23 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Navigation <span class="caret"></span></a>
+          <a href="#" class="white" data-toggle="dropdown" role="button" aria-haspopup="true
+
+
+
+
+
+
+
+
+          " aria-expanded="false">Navigation <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Option 1</a></li>
-            <li><a href="#">Option 2</a></li>
+            <li><%= link_to 'View Outlines', outlines_path %></li>
+            <% if can? :create, Outline %>
+              <li><a href="#">Create Outline</a
+              ></li>
+            <% end %>
+
             <li><a href="#">Option 3</a></li>
           </ul>
         </li>
