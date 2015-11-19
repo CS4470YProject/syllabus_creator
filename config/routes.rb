@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   root 'landing#index'
 
-  resources :outlines, only: %w(index show edit create update)
+  resources :outlines, only: %w(index show edit create update) do
+    collection do
+      get :search
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
