@@ -25,7 +25,7 @@ class Outline < ActiveRecord::Base
     joins(:course).where(courses[:code].matches("%#{code}%"))
   }
 
-  scope :recent_oultines, ->(num_outlines) {
+  scope :recent_outlines, ->(num_outlines) {
     order(created_at: :desc).limit(num_outlines)
   }
 
@@ -40,5 +40,9 @@ class Outline < ActiveRecord::Base
         ['Creation date (newest first)', 'created_at_desc'],
         ['Creation date (oldest first)', 'created_at_asc'],
     ]
+  end
+
+  def code
+    course.code
   end
 end

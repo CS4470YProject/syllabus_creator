@@ -11,7 +11,7 @@ class OutlinesController < ApplicationController
     ) or return
     @outlines = @filterrific.find.page(params[:page])
 
-    @current_outlines = Outline.recent_oultines(2);
+    @current_outlines = Outline.recent_outlines(2);
     respond_to do |format|
       format.js {}
       format.html {}
