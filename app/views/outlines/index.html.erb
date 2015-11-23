@@ -16,6 +16,8 @@
     <%= form_for_filterrific @filterrific do |f| %>
       <div class="form-group">
         <%= f.text_field( :search_query, class: 'filterrific-periodically-observed') %>
+        <%= f.select :sorted_by, @filterrific.select_options[:sorted_by], {} %>
+        <%= f.submit 'Apply Filters', class: 'btn btn-western btn-sm' %>
       </div>
     <% end %>
     <% @outlines.each do |out| %>

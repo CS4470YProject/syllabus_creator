@@ -10,6 +10,8 @@ class Outline < ActiveRecord::Base
                     case sort_option.to_s
                       when /^created_at_/
                         order("outlines.created_at #{ direction }")
+                      when /^code_/
+                        joins(:course).order("courses.code #{direction}")
                       else
                         raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
                     end
@@ -34,10 +36,9 @@ class Outline < ActiveRecord::Base
   )
   def self.options_for_sorted_by
     [
-        ['Name (a-z)', 'name_asc'],
-        ['Registration date (newest first)', 'created_at_desc'],
-        ['Registration date (oldest first)', 'created_at_asc'],
-        ['Country (a-z)', 'country_name_asc']
+        ['Course Code (a-z)', 'code_asc'],
+        ['Creation date (newest first)', 'created_at_desc'],
+        ['Creation date (oldest first)', 'created_at_asc'],
     ]
   end
 end

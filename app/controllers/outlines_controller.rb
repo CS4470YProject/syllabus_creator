@@ -4,7 +4,10 @@ class OutlinesController < ApplicationController
   def index
     @filterrific = initialize_filterrific(
         Outline,
-        params[:filterrific]
+        params[:filterrific],
+        select_options: {
+            sorted_by: Outline.options_for_sorted_by
+        }
     ) or return
     @outlines = @filterrific.find.page(params[:page])
 
