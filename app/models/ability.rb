@@ -16,7 +16,7 @@ class Ability
       end
     end
 
-    can %i(show read), Outline
+    can %i(show read search), Outline
 
 
     # Define abilities for the passed in user here. For example:

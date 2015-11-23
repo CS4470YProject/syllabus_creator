@@ -31,6 +31,10 @@ gem 'jquery-slick-rails', '~> 1.5.6'
 gem 'devise', '~> 3.5.2'
 gem 'chosen-rails', '~> 1.4.1'
 gem 'compass-rails', github: 'Compass/compass-rails', branch: 'master'
+gem 'filterrific'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+gem 'arel' , '~> 6.0.3'
 
 group :development do
   gem 'capistrano-rails', '~> 1.1.3'
@@ -43,6 +47,7 @@ group :development do
   gem 'capistrano-rails-console', '~> 1.0.0'
   gem 'railroady', '~> 1.4.0'
   gem 'web-console', '~> 2.0'
+  gem 'launchy', '~> 2.4.3'
 end
 
 group :development, :test do
@@ -51,5 +56,6 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 2.8.0'
   gem 'factory_girl_rails', '~> 4.5'
   gem 'spring'
+  gem 'capybara'
 end
 

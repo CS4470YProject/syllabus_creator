@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <%= form_for :search, url: search_outlines_path, method: :get, html: { class: 'form-inline' } do |f| %>
+        <%= f.text_field :query, class: 'form-control', value: @query, id: 'search-page-search' %>
+        <%= f.submit 'Search Outlines', class: 'btn btn-default', id: 'search-page-submit' %>
+      <% end %>
+    </div>
+  </div>
+  <% if @outlines.empty? && @query.present? %> No results found for <strong><%= @query %></strong>. <% end %>
+  <% @outlines.each do |outline| %>
+    <%= outline.course.code %>
+  <% end %>
+</div>

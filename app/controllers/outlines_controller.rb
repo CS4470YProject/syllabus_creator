@@ -2,7 +2,20 @@ class OutlinesController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @filterrific = initialize_filterrific(
+        Outline,
+        params[:filterrific],
+        select_options: {
+            sorted_by: Outline.options_for_sorted_by
+        }
+    ) or return
+    @outlines = @filterrific.find.page(params[:page])
 
+    @current_outlines = Outline.recent_outlines(2);
+    respond_to do |format|
+      format.js {}
+      format.html {}
+    end
   end
 
   def show
@@ -21,6 +34,11 @@ class OutlinesController < ApplicationController
 
   def edit
 
+  end
+
+  def search
+    @query = params[:search][:query] if params[:search]
+    @outlines = Outline.search_query(@query)
   end
 
   private

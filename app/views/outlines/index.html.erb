@@ -1,3 +1,27 @@
-<% @outlines.each do |outline| %>
-    <%= link_to outline_path(outline) do %> <%= outline.course.code %> <% end %>
-<% end %>
+<div class="container-fluid">
+  <h2> Latest Outlines: </h2>
+  <div id="latest-div">
+    <% @current_outlines.in_groups_of(12, false) do |outlines| %>
+      <div class="row">
+        <% outlines.each do |outline| %>
+          <div class="col-md-1">
+            <button class="btn btn-default top-outline"><%= outline.course.code %></button>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <h2> Filter Outlines: </h2>
+  <div id="filter-div">
+    <%= form_for_filterrific @filterrific do |f| %>
+      <div class="form-group">
+        <%= f.text_field :search_query, class: 'filterrific-periodically-observed', id: 'filter-search' %>
+        <%= f.select :sorted_by, @filterrific.select_options[:sorted_by], {}, id: 'filter-select' %>
+        <%= f.submit 'Apply Filters', class: 'btn btn-western btn-sm', id: 'filter-submit' %>
+      </div>
+    <% end %>
+    <% @outlines.each do |out| %>
+      <%= out.course.code %>
+    <% end %>
+  </div>
+</div>
