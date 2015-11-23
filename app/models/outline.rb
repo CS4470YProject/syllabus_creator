@@ -1,8 +1,12 @@
 class Outline < ActiveRecord::Base
+
+  before_save :set_type
   belongs_to :user
   belongs_to :course
   has_many :outline_elements
   has_many :elements, through: :outline_elements
+
+  default_scope { where(type: 'Outline') }
 
   scope :sorted_by, -> (sort_option) {
                     # extract the sort direction from the param value.
@@ -29,6 +33,9 @@ class Outline < ActiveRecord::Base
     order(created_at: :desc).limit(num_outlines)
   }
 
+  scope :outlines_only, -> {
+    where(type: 'Outline')
+  }
 
   filterrific(
       default_filter_params: { sorted_by: 'created_at_desc' },
@@ -44,5 +51,9 @@ class Outline < ActiveRecord::Base
 
   def code
     course.code
+  end
+
+  def set_type
+    self.type = 'Outline'
   end
 end

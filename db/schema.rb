@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151101041814) do
+ActiveRecord::Schema.define(version: 20151123041925) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "code",        limit: 255
@@ -48,9 +48,10 @@ ActiveRecord::Schema.define(version: 20151101041814) do
 
   create_table "outlines", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "course_id",  limit: 4
+    t.string   "type",       limit: 255
   end
 
   add_index "outlines", ["course_id"], name: "index_outlines_on_course_id", using: :btree
