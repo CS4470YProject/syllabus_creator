@@ -35,6 +35,7 @@ gem 'filterrific'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'arel' , '~> 6.0.3'
+gem 'delayed_job_active_record'
 
 group :development do
   gem 'capistrano-rails', '~> 1.1.3'
