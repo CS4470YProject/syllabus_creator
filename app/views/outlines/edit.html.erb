@@ -1,1 +1,21 @@
-Course Code: <%= @outline.course.code %>
+
+<%= javascript_include_tag 'outlines', 'data-turbolinks-track' => true %>
+
+<div class="container-fluid outline-edit-container">
+  <h2> Course Code: <%= @outline.course.code %> </h2>
+  <div class="row outline-editor">
+    <div class="col-md-1">
+      <div class="btn-group-vertical outline-toolbar">
+          <label id="create-paragraph">
+            <div class="tool draggable"> Element </div>
+          </label>
+          <div class="tool draggable"> Test </div>
+          <div class="tool draggable"> Test2 </div>
+          <div class="tool draggable"> Test3 </div>
+          <div class="tool draggable"> Test4 </div>
+      </div>
+    </div>
+    <div class="col-md-11 outline-view sortable">
+    </div>
+  </div>
+</div>
