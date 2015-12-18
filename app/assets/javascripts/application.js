@@ -16,3 +16,4 @@
 //= require bootstrap-sprockets
 //= require chosen-jquery
 //= require scaffold
+//= require smart_poll

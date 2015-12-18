@@ -1,23 +1,27 @@
 class CloneTemplate < ActiveJob::Base
   queue_as :default
 
-  attr_accessor :job_messenger
   before_enqueue do |job|
-    @job_messenger = JobMessenger(job_id, :queued)
+    job_messenger = JobMessenger.create(job_id: job_id, status: :queued)
+    PopulateCache.populate_for_job(job_messenger, job_id)
   end
 
   def perform(params)
-    debugger
     begin
-      @job_messenger = JobMessenger(job_id, :running)
+      job_messenger = JobMessenger.where(job_id: job_id).first
+      job_messenger.update_attributes(status: :running)
+      PopulateCache.populate_for_job(job_messenger, job_id)
       user = User.find(params[:user_id])
       template = Template.find(params[:template_id])
       #template.clone(user, params[:course_code])
     rescue => e
       Rails.logger.error e.message
-
+      job_messenger.update_attributes(status: :failed, message: e.message)
+      PopulateCache.populate_for_job(job_messenger, job_id)
+      raise e
     end
-
+    job_messenger.update_attributes(status: :succeeded)
+    PopulateCache.populate_for_job(job_messenger, job_id)
   end
 
 end

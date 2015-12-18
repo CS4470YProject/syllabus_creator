@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124014446) do
+ActiveRecord::Schema.define(version: 20151216034340) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "code",        limit: 255
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(version: 20151124014446) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "job_messengers", force: :cascade do |t|
+    t.string   "job_id",     limit: 255
+    t.string   "status",     limit: 255
+    t.string   "message",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "job_messengers", ["job_id"], name: "index_job_messengers_on_job_id", using: :btree
 
   create_table "outline_elements", force: :cascade do |t|
     t.integer  "outline_id", limit: 4

@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   resources :outlines, only: %w(index show edit create update) do
     collection do
       get :search
+      post :clone
     end
   end
+
+  resources :job_messages, only: %w(show), param: :job_id
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
