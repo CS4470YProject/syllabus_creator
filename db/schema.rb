@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151216034340) do
+ActiveRecord::Schema.define(version: 20151219034127) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "code",        limit: 255
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(version: 20151216034340) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "departments", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "element_rules", force: :cascade do |t|
     t.integer  "element_id", limit: 4
@@ -74,11 +80,13 @@ ActiveRecord::Schema.define(version: 20151216034340) do
   add_index "outline_elements", ["outline_id"], name: "index_outline_elements_on_outline_id", using: :btree
 
   create_table "outlines", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "course_id",  limit: 4
-    t.string   "type",       limit: 255
+    t.integer  "user_id",       limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "course_id",     limit: 4
+    t.string   "type",          limit: 255
+    t.integer  "parent_id",     limit: 4
+    t.integer  "department_id", limit: 4
   end
 
   add_index "outlines", ["course_id"], name: "index_outlines_on_course_id", using: :btree

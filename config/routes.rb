@@ -8,11 +8,15 @@ Rails.application.routes.draw do
 
   root 'landing#index'
 
-  resources :outlines, only: %w(index show edit create update) do
+  resources :outlines, only: %w(index show new edit create update) do
     collection do
       get :search
       post :clone
     end
+  end
+
+  resources :courses do
+    get :autocomplete_course_code, on: :collection
   end
 
   resources :job_messages, only: %w(show), param: :job_id

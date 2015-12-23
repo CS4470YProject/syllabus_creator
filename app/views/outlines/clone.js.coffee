@@ -3,16 +3,16 @@ $ ->
   $.poll (retry) ->
     $.getJSON "<%= job_message_path(@current_job.job_id) %>", (data) ->
       if data
-        console.log data.status
         if data.status == "succeeded"
-          console.log 'Winner'
-          $('#alert-div').html("<div class='alert alert-success'> Finished </div> ")
+          $('#alert-div').html("<div class='alert alert-success'> Finished Processing. Reloading...  </div> ")
+          setTimeout (->
+            location.reload()
+            return
+          ), 1500
+        else if data.status == "failed"
+          $('#alert-div').html("<div class='alert alert-danger'> Processing failed: " + data.message + "</div>")
         else
           retry()
       else
         retry()
-
-
-
-
 
