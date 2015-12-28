@@ -1,6 +1,7 @@
 class Template < Outline
 
   belongs_to :department
+  has_many :outlines, foreign_key: 'parent_id'
   default_scope { where(type: 'Template') }
 
   def set_type

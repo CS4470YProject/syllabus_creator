@@ -36,4 +36,29 @@ feature 'Outline' do
       expect(filter_div).to_not have_content(@outline.code)
     end
   end
+
+  describe 'Creating a new outline as an instructor', js:true do
+    before(:each) do
+      @template = FactoryGirl.create(:template)
+      @user  = FactoryGirl.create(:user, :instructor)
+      visit root_path
+      find_by_id('login-link').click
+      fill_in('user_email', with: @user.email)
+      fill_in('user_password', with: 'password')
+      find_by_id('login-button').click
+    end
+    scenario 'creating an outline with valid information' do
+      click_button 'Create New Outline'
+      fill_in('course_course_code', with: 'cs4470')
+      select_from_chosen(@template.department_name, from: 'outline_parent_id')
+      click_button 'Create Outline'
+      expect(page).to have_content('Processing')
+      expect(page).to have_content('cs4470')
+    end
+
+    scenario 'creating an outline with invalid course code' do
+    #  pending "add test once api is sorted #{__FILE__}"
+    end
+
+  end
 end

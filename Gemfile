@@ -55,12 +55,18 @@ group :development do
   gem 'launchy', '~> 2.4.3'
 end
 
-group :development, :test do
-  gem 'byebug'
+group :test do
   gem 'rspec-rails', '~> 3.2.2'
   gem 'shoulda-matchers', '~> 2.8.0'
   gem 'factory_girl_rails', '~> 4.5'
   gem 'spring'
   gem 'capybara'
+  gem 'faker'
+  gem 'poltergeist'
+  gem 'database_cleaner'
+end
+
+group :development, :test do
+  gem 'byebug'
 end
 
