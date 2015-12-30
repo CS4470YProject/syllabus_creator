@@ -20,11 +20,3 @@
 <% if @user.admin? %>
   <%= render 'outlines/partials/templates_create_view' %>
 <% end %>
-
-<%= form_for Outline.new, url: new_outline_path, method: :get do |f| %>
-  <%= fields_for :course do |ff| %>
-    <div>
-      <%#= ff.autocomplete_field :course_code, autocomplete_course_code_courses_path, class: 'form-control' %>
-    </div>
-  <% end %>
-<% end %>
