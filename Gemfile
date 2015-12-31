@@ -13,6 +13,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '~> 4.0.5'
+gem 'jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -36,6 +37,9 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'arel' , '~> 6.0.3'
 gem 'delayed_job_active_record'
+gem 'daemons'
+gem 'rails4-autocomplete', github: 'peterwillcn/rails4-autocomplete', branch: 'master'
+gem 'yajl-ruby'
 
 group :development do
   gem 'capistrano-rails', '~> 1.1.3'
@@ -51,12 +55,18 @@ group :development do
   gem 'launchy', '~> 2.4.3'
 end
 
-group :development, :test do
-  gem 'byebug'
+group :test do
   gem 'rspec-rails', '~> 3.2.2'
   gem 'shoulda-matchers', '~> 2.8.0'
   gem 'factory_girl_rails', '~> 4.5'
   gem 'spring'
   gem 'capybara'
+  gem 'faker'
+  gem 'poltergeist'
+  gem 'database_cleaner'
+end
+
+group :development, :test do
+  gem 'byebug'
 end
 

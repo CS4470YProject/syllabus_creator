@@ -3,6 +3,7 @@ class Outline < ActiveRecord::Base
   before_save :set_type
   belongs_to :user
   belongs_to :course
+  belongs_to :parent, class_name: 'Template'
   has_many :outline_elements
   has_many :elements, through: :outline_elements
 

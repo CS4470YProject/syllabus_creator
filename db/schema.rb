@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124011945) do
+ActiveRecord::Schema.define(version: 20151219034127) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "code",        limit: 255
@@ -37,6 +37,12 @@ ActiveRecord::Schema.define(version: 20151124011945) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
+  create_table "departments", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "element_rules", force: :cascade do |t|
     t.integer  "element_id", limit: 4
     t.integer  "rule_id",    limit: 4
@@ -52,22 +58,35 @@ ActiveRecord::Schema.define(version: 20151124011945) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "job_messengers", force: :cascade do |t|
+    t.string   "job_id",     limit: 255
+    t.string   "status",     limit: 255
+    t.string   "message",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "job_messengers", ["job_id"], name: "index_job_messengers_on_job_id", using: :btree
+
   create_table "outline_elements", force: :cascade do |t|
     t.integer  "outline_id", limit: 4
     t.integer  "element_id", limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "order",      limit: 4
   end
 
   add_index "outline_elements", ["element_id"], name: "index_outline_elements_on_element_id", using: :btree
   add_index "outline_elements", ["outline_id"], name: "index_outline_elements_on_outline_id", using: :btree
 
   create_table "outlines", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "course_id",  limit: 4
-    t.string   "type",       limit: 255
+    t.integer  "user_id",       limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "course_id",     limit: 4
+    t.string   "type",          limit: 255
+    t.integer  "parent_id",     limit: 4
+    t.integer  "department_id", limit: 4
   end
 
   add_index "outlines", ["course_id"], name: "index_outlines_on_course_id", using: :btree

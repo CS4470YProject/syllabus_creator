@@ -23,17 +23,26 @@ class OutlinesController < ApplicationController
   end
 
   def new
-
+    parent_id = @outline.parent_id
+    @current_job = CloneTemplate.perform_later(user_id: current_user.id, course_code: params[:course][:course_code], parent_id: parent_id)
   end
 
   def create
     @outline.user = current_user
     @outline.save
+    @current_job = CloneTemplate.perform_later(course_code: 'cs4444') #populate this correctly
     redirect_to edit_outline_path(id: @outline.id)
   end
 
   def edit
 
+  end
+
+  def clone
+    user_id = current_user.id
+    course_code = 'cs4444' # TODO: Get this from user
+    template_id = Template.first.id # TODO: Get this from user
+    @current_job = CloneTemplate.perform_later(user_id: user_id, template_id: template_id, course_code: course_code)
   end
 
   def search
@@ -44,6 +53,6 @@ class OutlinesController < ApplicationController
   private
 
   def outline_params
-    params.require(:outline).permit(:course_id)
+    params.require(:outline).permit(:course_id, :parent_id)
   end
 end

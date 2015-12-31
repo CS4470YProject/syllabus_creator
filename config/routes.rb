@@ -8,11 +8,18 @@ Rails.application.routes.draw do
 
   root 'landing#index'
 
-  resources :outlines, only: %w(index show edit create update) do
+  resources :outlines, only: %w(index show new edit create update) do
     collection do
       get :search
+      post :clone
     end
   end
+
+  resources :courses do
+    get :autocomplete_course_code, on: :collection
+  end
+
+  resources :job_messages, only: %w(show), param: :job_id
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

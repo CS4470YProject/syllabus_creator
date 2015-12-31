@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :template do
+  factory :job_messenger do
     
   end
 

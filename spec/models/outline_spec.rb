@@ -6,6 +6,7 @@ RSpec.describe Outline, type: :model do
     it { should have_many(:elements).through(:outline_elements) }
     it { should belong_to(:user) }
     it { should belong_to(:course) }
+    it { should belong_to(:parent)}
   end
 
   describe 'Scopes' do

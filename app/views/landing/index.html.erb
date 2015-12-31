@@ -4,8 +4,9 @@
 </div>
 <% if can? :create, Outline %>
   <div>
-    <%= render 'shared/new_outline_modal', courses: @courses %>
+    <%= render 'shared/new_outline_modal', courses: @courses, templates: @templates %>
   </div>
+
 <% end %>
 
 <% if @user.guest? %>
