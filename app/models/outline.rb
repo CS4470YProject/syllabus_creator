@@ -1,13 +1,15 @@
 class Outline < ActiveRecord::Base
 
   before_save :set_type
+  before_destroy :destroy_elements
   belongs_to :user
   belongs_to :course
   belongs_to :parent, class_name: 'Template'
-  has_many :outline_elements
+  has_many :outline_elements, dependent: :destroy
   has_many :elements, through: :outline_elements
 
   default_scope { where(type: 'Outline') }
+  accepts_nested_attributes_for :outline_elements, allow_destroy: true
 
   scope :sorted_by, -> (sort_option) {
                     # extract the sort direction from the param value.
@@ -57,4 +59,11 @@ class Outline < ActiveRecord::Base
   def set_type
     self.type = 'Outline'
   end
+
+  def destroy_elements
+    elements.each do |ele|
+      ele.destroy if ele.outline_elements.size <= 1
+    end
+  end
+
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151219034127) do
+ActiveRecord::Schema.define(version: 20160101001009) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "code",        limit: 255
@@ -54,8 +54,9 @@ ActiveRecord::Schema.define(version: 20151219034127) do
   add_index "element_rules", ["rule_id"], name: "index_element_rules_on_rule_id", using: :btree
 
   create_table "elements", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.text     "text",       limit: 65535
   end
 
   create_table "job_messengers", force: :cascade do |t|
@@ -99,8 +100,10 @@ ActiveRecord::Schema.define(version: 20151219034127) do
   end
 
   create_table "rules", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "mutable",    default: true
+    t.boolean  "required",   default: false
   end
 
   create_table "user_roles", force: :cascade do |t|

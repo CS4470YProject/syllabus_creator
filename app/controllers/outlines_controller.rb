@@ -38,21 +38,19 @@ class OutlinesController < ApplicationController
 
   end
 
-  def clone
-    user_id = current_user.id
-    course_code = 'cs4444' # TODO: Get this from user
-    template_id = Template.first.id # TODO: Get this from user
-    @current_job = CloneTemplate.perform_later(user_id: user_id, template_id: template_id, course_code: course_code)
-  end
-
   def search
     @query = params[:search][:query] if params[:search]
     @outlines = Outline.search_query(@query)
   end
 
+  def update
+    @outline.update_attributes(outline_params)
+    redirect_to edit_outline_path
+  end
+
   private
 
   def outline_params
-    params.require(:outline).permit(:course_id, :parent_id)
+    params.require(:outline).permit(:course_id, :parent_id, outline_elements_attributes:[:id, :order, element_attributes:[:id, :text]])
   end
 end

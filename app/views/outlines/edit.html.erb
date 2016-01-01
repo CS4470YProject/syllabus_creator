@@ -1,1 +1,10 @@
 Course Code: <%= @outline.course.code %>
+<%= form_for @outline, url: outline_path(@outline), method: :put do |f| %>
+  <%= f.fields_for :outline_elements do |f_oe| %>
+    <%# This is where rank stuff will go so put it here %>
+    <%= f_oe.fields_for :element do |f_e| %>
+      <%= render 'outlines/partials/edit_element', f_e: f_e %>
+    <% end %>
+  <% end %>
+  <%= f.submit class: 'btn btn-western' %>
+<% end %>

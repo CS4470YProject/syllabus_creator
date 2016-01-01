@@ -19,3 +19,5 @@
 //= require scaffold
 //= require smart_poll
 //= require autocomplete-rails
+//= require ckeditor-jquery
+//= require outlines

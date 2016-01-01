@@ -40,6 +40,7 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'rails4-autocomplete', github: 'peterwillcn/rails4-autocomplete', branch: 'master'
 gem 'yajl-ruby'
+gem 'ckeditor_rails'
 
 group :development do
   gem 'capistrano-rails', '~> 1.1.3'

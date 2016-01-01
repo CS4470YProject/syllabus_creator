@@ -14,7 +14,12 @@ class Template < Outline
     outline = Outline.new(user: user, course: course, parent: self)
     elements.each do |element|
       oe = outline_elements.where(element_id: element.id).first
-      outline.outline_elements << OutlineElement.new(element: element, outline: outline, order: oe.order)
+      if element.mutable?
+        new_element = element.copy_and_save
+        outline.outline_elements << OutlineElement.new(element: new_element, outline: outline, order: oe.order)
+      else
+        outline.outline_elements << OutlineElement.new(element: element, outline: outline, order: oe.order)
+      end
     end
     if outline.save
       outline
@@ -24,7 +29,7 @@ class Template < Outline
   end
 
   def department_name
-    "test dept"
+    department.name
   end
 end
 

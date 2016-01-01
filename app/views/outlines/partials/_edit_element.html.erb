@@ -1,0 +1,8 @@
+<div class="element-edit">
+  <% if f_e.object.mutable? %>
+    <%= f_e.text_area :text, class: 'ckeditor' %>
+  <% else %>
+    <%= f_e.object.text %>
+  <% end %>
+</div>
+
