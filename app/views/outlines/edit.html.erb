@@ -2,20 +2,44 @@
 <%= javascript_include_tag 'outlines', 'data-turbolinks-track' => true %>
 
 <div class="container-fluid outline-edit-container">
-  <h2> Course Code: <%= @outline.course.code %> </h2>
-  <div class="row outline-editor">
-    <div class="col-md-1">
-      <div class="btn-group-vertical outline-toolbar">
-          <label id="create-paragraph">
-            <div class="tool draggable"> Element </div>
-          </label>
-          <div class="tool draggable"> Test </div>
-          <div class="tool draggable"> Test2 </div>
-          <div class="tool draggable"> Test3 </div>
-          <div class="tool draggable"> Test4 </div>
-      </div>
-    </div>
-    <div class="col-md-11 outline-view sortable">
-    </div>
+  <div id="outside-form">
+    <!-- we may need to throw all content that doesn't belong to the outline object here on submit -->
+    <!-- issue is we need the form page to respond to elements being dragged onto it -->
   </div>
+  <h2 class="outline-edit-title"> Outline Editor - <%= @outline.course.code %> </h2>
+  <%= form_for :@outline, method: :post do |f| %>
+      <div class="row outline-editor">
+
+        <div class="col-md-1">
+          <div class="btn-group-vertical outline-toolbar">
+            <!-- This is where we will populate toolbar content
+        <%# @toolbar_elements.each do |out| %>
+        <div id="create-paragraph" class="tool draggable">
+          <label>
+             *Toolbar item title*
+             We'll want some field to say if it is cloneable or not
+          </label>
+        </div>
+        <%# end %> -->
+            <div class="tool draggable cloneable">
+              <label> Cloneable Element </label>
+              <input id="element-html-content" hidden="true" value="<div class='tool draggable'><h3>Heading</h3><p>New content element from rails!</p></div>"/><!-- <%# item.htmlContent %> -->
+            </div>
+            <div class="tool draggable"> Test
+              <input id="element-order"/>
+            </div>
+            <div class="tool draggable"> Test 2
+              <input id="element-order"/>
+            </div>
+            <div class="tool draggable"> Test 3
+              <input id="element-order"/>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-11 outline-view sortable">
+
+
+        </div>
+      </div>
+  <% end %>
 </div>

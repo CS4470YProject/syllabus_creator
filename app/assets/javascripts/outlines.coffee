@@ -3,24 +3,23 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
- #Sortable functionality. Objects that hold sortable elements should have this css class
- $(".sortable").sortable
-   revert: true
-   stop: (e, ui) ->
-     $.map $(this).find(".draggable"), (el) ->
-       $(el).attr "index", $(el).index()
+#Sortable functionality. Objects that hold sortable elements should have this css class
+  $(".sortable").sortable
+    revert: true
+    stop: (e, ui) ->
+      $.map $(this).find(".draggable"), (el) ->
+        #$("#outline-form").prepend el #sets the element inside the form object
+        $(el).children("#element-order").val $(el).index()
 
- #Draggable functionality. Draggable elements should have this css class
- $(".draggable").draggable
-   connectToSortable: ".sortable"
-   evert: "invalid"
+  #Draggable functionality. Draggable elements should have this css class
+  $(".draggable").draggable
+    connectToSortable: ".sortable"
+    revert: "invalid"
 
- ### Define 'create' elements here (elements that when dragged will create new content) ###
- $("#create-paragraph").draggable
-   connectToSortable: ".sortable"
-   helper: ->
-     $  "<div class='draggable'>" +
-         "<h3>Heading</h3>" +
-         "<p>New content element</p>" +
-         "</div>"
-   revert: "invalid"
+  ### Define 'create' elements here (elements that when dragged will create new content) ###
+  ### The content of the clone is passed in from a hidden html input under the id element-html-content ###
+  $(".cloneable").draggable
+    connectToSortable: ".sortable"
+    helper: (el) ->
+      $  $(el.currentTarget).children('#element-html-content').val()
+    revert: "invalid"
