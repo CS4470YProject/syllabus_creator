@@ -8,7 +8,7 @@ $ ->
     revert: true
     stop: (e, ui) ->
       $.map $(this).find(".draggable"), (el) ->
-        #$("#outline-form").prepend el #sets the element inside the form object
+        #set the ordering of each element whenever a drag finishes
         $(el).children("#element-order").val $(el).index()
 
   #Draggable functionality. Draggable elements should have this css class
