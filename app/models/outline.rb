@@ -60,6 +60,18 @@ class Outline < ActiveRecord::Base
     self.type = 'Outline'
   end
 
+  def add_element(order, element_type = 'text')
+    #TODO: Support for other element types
+    element = Element.new
+    outline_elements << OutlineElement.new(outline_id: id, element: element)
+    save!
+    element
+  end
+
+  def ordered_elements
+
+  end
+
   def destroy_elements
     elements.each do |ele|
       ele.destroy if ele.outline_elements.size <= 1

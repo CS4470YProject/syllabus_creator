@@ -48,6 +48,18 @@ class OutlinesController < ApplicationController
     redirect_to edit_outline_path
   end
 
+  def add_element
+    #TODO: Add order to the element
+    @outline = Outline.where(id: params[:outline_id]).first
+    @element = @outline.add_element(5) #Change this
+  end
+
+  def remove_element
+    outline_element = OutlineElement.where(id: params[:outline_element_id].to_i).first
+    outline_element.destroy
+    @outline_element_id = params[:outline_element_id]
+  end
+
   private
 
   def outline_params

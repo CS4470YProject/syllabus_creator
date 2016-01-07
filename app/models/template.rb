@@ -14,7 +14,7 @@ class Template < Outline
     outline = Outline.new(user: user, course: course, parent: self)
     elements.each do |element|
       oe = outline_elements.where(element_id: element.id).first
-      if element.mutable?
+      if element.unmutable?
         new_element = element.copy_and_save
         outline.outline_elements << OutlineElement.new(element: new_element, outline: outline, order: oe.order)
       else

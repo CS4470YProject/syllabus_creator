@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   root 'landing#index'
 
   resources :outlines, only: %w(index show new edit create update) do
+    post :add_element
+    post :remove_element
     collection do
       get :search
     end

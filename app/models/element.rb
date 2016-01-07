@@ -12,8 +12,12 @@ class Element < ActiveRecord::Base
     new_element
   end
 
-  def mutable?
-    rules.where(mutable: false).size == 0
+  def unmutable?
+    rules.where(mutable: false).size >= 1
+  end
+
+  def required?
+    rules.where(required: true).size >= 1
   end
 
 end

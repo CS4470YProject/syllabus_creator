@@ -1,8 +1,22 @@
-<div class="element-edit">
-  <% if f_e.object.mutable? %>
-    <%= f_e.text_area :text, class: 'ckeditor' %>
-  <% else %>
-    <%= f_e.object.text %>
+<%= form_for outline, url: outline_path(outline), method: :put do |f| %>
+  <%= f.fields_for :outline_elements do |f_oe| %>
+    <div class="element-edit" id="element-edit-<%= f_oe.object.id %>">
+      <%= f_oe.fields_for :element do |f_e| %>
+        <% unless f_e.object.required? %>
+          <%= link_to outline_remove_element_path(outline_id: outline.id, outline_element_id: f_oe.object.id), class: 'close', method: :post, remote: true do %>&times<% end %>
+        <% end %>
+        <div class="element-text">
+          <% obj = f_e.object %>
+          <% if obj.unmutable? %>
+            <%= obj.text.html_safe %>
+          <% else %>
+            <%= f_e.text_area :text, class: 'ckeditor' %>
+        <% end %>
+        </div>
+      <% end %>
+      <%= f_oe.hidden_field :order, value: f_oe.object.order %>
+      <%# This is where rank stuff will go so put it here %>
+    </div>
   <% end %>
-</div>
-
+  <%= f.submit class: 'btn btn-western' %>
+<% end %>
