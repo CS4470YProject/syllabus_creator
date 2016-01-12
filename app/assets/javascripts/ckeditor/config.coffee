@@ -78,4 +78,5 @@ CKEDITOR.editorConfig = (config) ->
     }
   ]
   config.removeButtons = 'Underline,Subscript,Superscript,Source,Save,Flash,NewPage,Templates,Print,FontSize'
+  config.removePlugins = 'resize'
   return

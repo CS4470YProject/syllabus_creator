@@ -1,0 +1,54 @@
+<%= form_for outline, url: outline_path(outline), method: :put do |f| %>
+  <div class="row outline-editor">
+    <div class="col-md-1">
+      <div class="btn-group-vertical outline-toolbar">
+
+        <!-- This is where we will populate toolbar content
+        <%# @toolbar_elements.each do |out| %>
+        <div id="create-paragraph" class="tool draggable">
+          <label>
+             *Toolbar item title*
+             We'll want some field to say if it is cloneable or not
+          </label>
+        </div>
+        <%# end %> -->
+        <!-- this tooldbar element demonstrates passing html content to jquery via hidden input -->
+        <div class="tool draggable cloneable">
+          <label> Cloneable Element </label>
+          <input id="element-html-content" hidden="true" value="<div class='tool draggable'><h3>Heading</h3><p>New content element from rails!</p></div>"/><!-- <%# item.htmlContent %> -->
+        </div>
+        <div class="tool draggable"> Test
+          <input id="element-order"/>
+        </div>
+        <div class="tool draggable"> Test 2
+          <input id="element-order"/>
+        </div>
+        <div class="tool draggable"> Test 3
+          <input id="element-order"/>
+        </div>
+      </div>
+    </div>
+    <!-- this is the actual form that the user is creating, elements will be dragged into here -->
+    <div class="col-md-11 outline-view sortable">
+      <!-- getting rails to recognize elements dragged into here in the js may be tricky.. -->
+      <%= f.fields_for :outline_elements do |f_oe| %>
+        <div class="element-edit" id="element-edit-<%= f_oe.object.id %>">
+          <%= f_oe.fields_for :element do |f_e| %>
+            <% unless f_e.object.required? %>
+              <%= link_to outline_remove_element_path(outline_id: outline.id, outline_element_id: f_oe.object.id), class: 'close', method: :post, remote: true do %>&times<% end %>
+            <% end %>
+            <div class="element-text sortable draggable">
+              <% obj = f_e.object %>
+              <% if obj.unmutable? %>
+                <%= obj.text.html_safe %>
+              <% else %>
+                <%= f_e.text_area :text, class: 'ckeditor' %>
+              <% end %>
+            </div>
+          <% end %>
+          <%= f_oe.hidden_field :order, value: f_oe.object.order %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

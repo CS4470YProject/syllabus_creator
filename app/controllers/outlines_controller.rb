@@ -45,7 +45,10 @@ class OutlinesController < ApplicationController
 
   def update
     @outline.update_attributes(outline_params)
-    redirect_to edit_outline_path
+    respond_to do |format|
+      format.html { redirect_to edit_outline_path }
+      format.js {}
+    end
   end
 
   def add_element
