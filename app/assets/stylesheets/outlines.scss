@@ -2,11 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+html,body {
+  height: 100%;
+}
+
+.body {
+ // height: 100%;
+}
+
 .top-outline {
   width: 125px !important;
   height: 125px;
 }
-
 
 .ui-autocomplete {
   position: fixed;
@@ -66,4 +73,49 @@
 
 .element-text {
   width: 98%;
+}
+
+.outline-edit-container {
+  height: 100%;
+}
+
+.outline-editor {
+  height: 65%;
+  padding-right: 10px;
+  display: table;
+}
+
+.outline-toolbar {
+  float: none;
+  display: table-cell;
+}
+.outline-view {
+  float: none;
+  display: table-cell;
+  border: 2px solid $black;
+  border-radius: 25px;
+}
+
+.tool {
+  text-align: center;
+  background: none;
+  padding: 12px 22px;
+  margin-bottom: 10px;
+  border: 2px solid $black;
+  color: $black;
+}
+
+.tool:hover, .tool:focus {
+  color: $dark-gray;
+  border-color: $dark-gray;
+  cursor: -webkit-grab;
+}
+
+.tool:active {
+  cursor: -webkit-grabbing;
+}
+
+.element-text {
+  min-height: 100px;
+  border: 2px solid $western-purple;
 }
