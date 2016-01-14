@@ -1,9 +1,9 @@
 <%= form_for outline, url: outline_path(outline), method: :put, remote: true do |f| %>
   <div class="sortable">
     <%= f.fields_for :outline_elements do |f_oe| %>
-      <div class="element-edit" id="element-edit-<%= f_oe.object.id %>">
+      <div class="element-edit draggable" id="element-edit-<%= f_oe.object.id %>">
         <%= f_oe.fields_for :element do |f_e| %>
-          <div class="element-text draggable">
+          <div class="element-text">
             <% unless f_e.object.required? %>
               <%= link_to outline_remove_element_path(outline_id: outline.id, outline_element_id: f_oe.object.id), class: 'close', method: :post, remote: true do %>&times<% end %>
             <% end %>

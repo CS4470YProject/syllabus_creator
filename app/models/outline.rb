@@ -5,7 +5,7 @@ class Outline < ActiveRecord::Base
   belongs_to :user
   belongs_to :course
   belongs_to :parent, class_name: 'Template'
-  has_many :outline_elements, -> { order(order: :desc )}, dependent: :destroy
+  has_many :outline_elements, -> { order(order: :asc )}, dependent: :destroy
   has_many :elements, through: :outline_elements
 
   default_scope { where(type: 'Outline') }

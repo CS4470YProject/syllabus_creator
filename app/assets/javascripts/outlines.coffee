@@ -31,18 +31,16 @@ class Editor
   this.submitForm = ->
     $('.edit_outline').submit()
 
-  this.updateOrder  = (editor_div) ->
-    order_label = editor_div.children('.element-order')
-    prev_value = order_label.attr('value')
-
-
+  this.updateOrder  = ->
+    $('.element-order').each (idx) ->
+      $(this).val(idx)
 
 $ ->
 
 #Sortable functionality. Objects that hold sortable elements should have this css class
   $(".sortable").sortable
     revert: true
-    stop: (e, ui) ->
+    stop: (el, ui) ->
       $.map $(this).find(".draggable"), (el) ->
         #set the ordering of each element whenever a drag finishes
         $(el).children("#element-order").val $(el).index()
@@ -53,8 +51,9 @@ $ ->
     revert: "invalid",
     iframeFix: true,
     start: (event, ui) ->
-      Editor.disableEditor($(event.target))
+      Editor.disableEditor($(event.target).children('.element-text'))
     stop: (event, ui) ->
+      setTimeout(Editor.updateOrder, 1100)
 
   ### Define 'create' elements here (elements that when dragged will create new content) ###
   ### The content of the clone is passed in from a hidden html input under the id element-html-content ###
