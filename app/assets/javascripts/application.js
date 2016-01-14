@@ -21,4 +21,5 @@
 //= require smart_poll
 //= require autocomplete-rails
 //= require ckeditor-jquery
+//= require editor
 //= require outlines

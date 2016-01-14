@@ -1,7 +1,7 @@
 <%= form_for outline, url: outline_path(outline), method: :put, remote: true do |f| %>
   <div class="sortable">
     <%= f.fields_for :outline_elements do |f_oe| %>
-      <div class="element-edit draggable" id="element-edit-<%= f_oe.object.id %>">
+      <div class="element-edit" id="element-edit-<%= f_oe.object.id %>">
         <%= f_oe.fields_for :element do |f_e| %>
           <div class="element-text">
             <% unless f_e.object.required? %>

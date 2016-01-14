@@ -2,58 +2,28 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-class Editor
-  this.disableEditor = (editor_div) ->
-    editor_div.css('minHeight', '100px')
-    editor_div.children('.html-element').removeClass('hidden')
-    editor_div.find('.ckeditor-element').addClass('hidden')
-    editor_id = editor_div.find('.ckeditor-element').find('textarea').attr('id')
-    if editor_id && CKEDITOR['instances'][editor_id]
-      html_data = CKEDITOR['instances'][editor_id].getData()
-      editor_div.children('.html-element').children('.html-element-text').html(html_data)
-      CKEDITOR['instances'][editor_id].destroy()
-
-  this.reloadEditor = (editor_div) ->
-    editor_div.css('minHeight', '350px')
-    editor_div.find('.html-element').addClass('hidden')
-    editor_div.find('.ckeditor-element').removeClass('hidden')
-    editor_id = editor_div.find('.ckeditor-element').find('textarea').attr('id')
-    if  CKEDITOR['instances'][editor_id]
-    else
-      CKEDITOR.replace(editor_id)
-
-  this.disableAllEditors = ->
-    $('.element-text').each ->
-      Editor.disableEditor($(this))
-
-  this.reloadAllEditors = ->
-
-  this.submitForm = ->
-    $('.edit_outline').submit()
-
-  this.updateOrder  = ->
-    $('.element-order').each (idx) ->
-      $(this).val(idx)
-
 $ ->
-
-#Sortable functionality. Objects that hold sortable elements should have this css class
-  $(".sortable").sortable
-    revert: true
-    stop: (el, ui) ->
-      $.map $(this).find(".draggable"), (el) ->
-        #set the ordering of each element whenever a drag finishes
-        $(el).children("#element-order").val $(el).index()
-
-  #Draggable functionality. Draggable elements should have this css class
-  $(".draggable").draggable
-    connectToSortable: ".sortable",
-    revert: "invalid",
-    iframeFix: true,
-    start: (event, ui) ->
-      Editor.disableEditor($(event.target).children('.element-text'))
-    stop: (event, ui) ->
-      setTimeout(Editor.updateOrder, 1100)
+#
+##Sortable functionality. Objects that hold sortable elements should have this css class
+#  $(".sortable").sortable
+#    revert: true
+#    start: (event, ui) ->
+#      Editor.disableEditor($(ui.item).children('.element-text'))
+#    stop: (event, ui) ->
+#      Editor.updateOrder()
+##      $.map $(this).find(".element-edit"), (event) ->
+##        #set the ordering of each element whenever a drag finishes
+##        $(event).children(".element-order").val $(event).index()
+#
+#  #Draggable functionality. Draggable elements should have this css class
+#  $(".draggable").draggable
+#    connectToSortable: ".sortable",
+#    revert: "invalid",
+#    revertDuration: 0,
+#    start: (event, ui) ->
+#      Editor.disableEditor($(event.target).children('.element-text'))
+#    stop: (event, ui) ->
+#      setTimeout(Editor.updateOrder, 1100)
 
   ### Define 'create' elements here (elements that when dragged will create new content) ###
   ### The content of the clone is passed in from a hidden html input under the id element-html-content ###
@@ -72,3 +42,7 @@ $ ->
     par = $(this).parents('.element-text')
     Editor.disableEditor(par)
     Editor.submitForm()
+
+
+  Editor.enableSortable()
+
