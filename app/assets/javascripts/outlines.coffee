@@ -3,18 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-#
-##Sortable functionality. Objects that hold sortable elements should have this css class
-#  $(".sortable").sortable
-#    revert: true
-#    start: (event, ui) ->
-#      Editor.disableEditor($(ui.item).children('.element-text'))
-#    stop: (event, ui) ->
-#      Editor.updateOrder()
-##      $.map $(this).find(".element-edit"), (event) ->
-##        #set the ordering of each element whenever a drag finishes
-##        $(event).children(".element-order").val $(event).index()
-#
 #  #Draggable functionality. Draggable elements should have this css class
 #  $(".draggable").draggable
 #    connectToSortable: ".sortable",
