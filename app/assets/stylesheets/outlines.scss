@@ -119,3 +119,30 @@ html,body {
   min-height: 100px;
   border: 2px solid $western-purple;
 }
+
+.senate-rules {
+  margin: auto;
+  width: 60%;
+}
+
+.senate-rule {
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+
+  .bootstrap-switch {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    .bootstrap-switch-handle-on {
+      -webkit-border-radius: 0px;
+      -moz-border-radius: 0px;
+      border-radius: 0px;
+    }
+    .bootstrap-switch-handle-off {
+      -webkit-border-radius: 0px;
+      -moz-border-radius: 0px;
+      border-radius: 0px;
+    }
+  }
+}

@@ -16,6 +16,7 @@
 //= require jquery-ui
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require bootstrap-switch
 //= require chosen-jquery
 //= require scaffold
 //= require smart_poll

@@ -1,26 +1,17 @@
-<div id="window-content">
-
+<div class="container-fulid">
+  <%= form_for :senate_rules, url: outline_clone_path(outline_id: @template.id, course_code: @course_code) do |f| %>
+    <div class="senate-rules">
+      <% get_senate_rules(@template).each_with_index do |rule, idx| %>
+        <div class="row senate-rule <%= idx % 2 == 0 ? 'pure-white-bg' : ''  %>">
+          <div class="col-md-10 rule-col">
+            <%= f.label rule.id, rule.description %>
+          </div>
+          <div class="col-md-2">
+            <%= f.check_box rule.id, class: 'toggle-check', data: {'on-text': 'Yes', 'off-text': 'No', 'on-color': 'success'} %>
+          </div>
+        </div>
+      <% end %>
+      <%= f.submit 'Continue', class: 'btn btn-success pull-right' %>
+    </div>
+  <% end %>
 </div>
-<script type="application/javascript">
-  $(function() {
-    $('#alert-div').html("<div class='alert alert-info'> Processing <span class='fa fa-spinner fa-spin'></span> </div> ");
-    return $.poll(function(retry) {
-      return $.getJSON("<%= job_message_path(@current_job.job_id) %>", function(data) {
-        if (data) {
-          if (data.status === "succeeded") {
-            $('#alert-div').html("<div class='alert alert-success'> Finished Processing. Reloading...  </div> ");
-            return setTimeout((function() {
-              window.location.replace("<%= root_url %>".slice(0, -1) + data.message)
-            }), 1500);
-          } else if (data.status === "failed") {
-            return $('#alert-div').html("<div class='alert alert-danger'> Processing failed: " + data.message + "</div>");
-          } else {
-            return retry();
-          }
-        } else {
-          return retry();
-        }
-      });
-    });
-  });
-</script>

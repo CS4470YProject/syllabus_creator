@@ -182,5 +182,10 @@ fieldset[disabled] .btn-western.focus {
   color: $western-purple;
   background-color: #fff;
 }
+.form-control {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
 
 /* END Western Button */

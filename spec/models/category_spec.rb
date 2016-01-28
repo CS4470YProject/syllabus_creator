@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Department, type: :model do
+RSpec.describe Category, type: :model do
   describe 'Relationships' do
     it { should have_many(:templates) }
   end

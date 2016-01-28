@@ -12,9 +12,9 @@
               <div class="html-element-text">
                 <%= obj.text.try(:html_safe) %>
               </div>
-              <% unless obj.unmutable? %> <a href="#" class="display-editor"><span>...Click to edit</span></a> <% end %>
+              <% unless obj.immutable? %> <a href="#" class="display-editor"><span>...Click to edit</span></a> <% end %>
             </div>
-            <% if obj.unmutable? %>
+            <% if obj.immutable? %>
             <% else %>
               <div class="ckeditor-element hidden">
                 <%= f_e.text_area :text, class: 'ckeditor' %>

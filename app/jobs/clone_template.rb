@@ -13,7 +13,7 @@ class CloneTemplate < ActiveJob::Base
       PopulateCache.populate_for_job(job_messenger, job_id)
       user = User.find(params[:user_id])
       template = Template.find(params[:parent_id])
-      @outline = template.clone(user, params[:course_code])
+      @outline = template.clone(user, params[:course_code], params[:senate_rules])
     rescue => e
       Rails.logger.error e.message
       job_messenger.update_attributes(status: :failed, message: e.message)

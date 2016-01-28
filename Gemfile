@@ -41,6 +41,8 @@ gem 'daemons'
 gem 'rails4-autocomplete', github: 'peterwillcn/rails4-autocomplete', branch: 'master'
 gem 'yajl-ruby'
 gem 'ckeditor_rails'
+gem 'bootstrap-switch-rails'
+gem 'faker'
 
 group :development do
   gem 'capistrano-rails', '~> 1.1.3'

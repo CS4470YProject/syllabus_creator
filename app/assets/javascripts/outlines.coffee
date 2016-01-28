@@ -31,6 +31,8 @@ $ ->
     Editor.disableEditor(par)
     Editor.submitForm()
 
+  $('.toggle-check').bootstrapSwitch('state', true)
+
 
   Editor.enableSortable()
 

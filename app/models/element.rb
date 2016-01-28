@@ -12,8 +12,8 @@ class Element < ActiveRecord::Base
     new_element
   end
 
-  def unmutable?
-    rules.where(mutable: false).size >= 1
+  def immutable?
+    rules.where(immutable: true).size >= 1
   end
 
   def required?

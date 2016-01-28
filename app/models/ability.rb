@@ -9,7 +9,6 @@ class Ability
       end
 
       if user.instructor?
-        can :create, Outline
         can :clone, Outline
         can [:edit, :update, :add_element, :remove_element], Outline do |outline|
           user.outlines.where(id: outline.id).size > 0
