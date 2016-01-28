@@ -68,10 +68,6 @@ class Outline < ActiveRecord::Base
     element
   end
 
-  def ordered_elements
-
-  end
-
   def destroy_elements
     elements.each do |ele|
       ele.destroy if ele.outline_elements.size <= 1
