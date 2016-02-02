@@ -39,6 +39,8 @@ e_ri_oe = OutlineElement.create(outline: template_cs, element: element_required_
 
 template_cs.outline_elements << e_i_oe << e_r_oe << e_ri_oe
 
+Rake::Task['db:seed_senate_rules'].invoke
+
 # cs4470 = Course.create(code: 'cs4470')
 # cs3333 = Course.create(code: 'cs3333')
 # cs3319 = Course.create(code: 'cs3319')
