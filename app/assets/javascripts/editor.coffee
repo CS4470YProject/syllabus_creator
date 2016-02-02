@@ -29,12 +29,26 @@ class @Editor
     $('.edit_outline').submit()
 
   this.updateOrder  = ->
-    $.map $('.element-edit'), (event) ->
-      $(event).children(".element-order").val $(event).index()
+    pos = 0
+    $.map $(".element-edit"), (event) ->
+      $(event).children(".element-order").val pos++
 
   this.enableSortable = ->
     $('.sortable').sortable
       revert: true,
+      start: (event, ui) ->
+        Editor.disableEditor($(ui.item).children('.element-text'))
+      stop: (event, ui) ->
+        Editor.updateOrder(0)
+
+  this.enableToolbarDraggable = ->
+    ### Define 'create' elements here (elements that when dragged will create new content) ###
+    ### The content of the clone is passed in from a hidden html input under the id element-html-content ###
+    $(".cloneable").draggable
+      connectToSortable: ".sortable"
+      helper: (el) ->
+        $  $(el.currentTarget).children('.element-html-content').val()
+      revert: "invalid"
       start: (event, ui) ->
         Editor.disableEditor($(ui.item).children('.element-text'))
       stop: (event, ui) ->

@@ -1,4 +1,6 @@
+<div class=" outline-view">
 <%= form_for outline, url: outline_path(outline), method: :put, remote: true do |f| %>
+    <td>
   <div class="sortable">
     <%= f.fields_for :outline_elements do |f_oe| %>
       <div class="element-edit" id="element-edit-<%= f_oe.object.id %>">
@@ -31,4 +33,6 @@
   </div>
   <%= f.submit class: 'btn btn-western' %>
 <% end %>
+<td>
 <%= button_to 'Add Element', outline_add_element_path(@outline), class: 'btn btn-western btn-sm', remote: true %>
+</div>
