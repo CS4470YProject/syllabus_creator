@@ -13,14 +13,6 @@ $ ->
 #    stop: (event, ui) ->
 #      setTimeout(Editor.updateOrder, 1100)
 
-  ### Define 'create' elements here (elements that when dragged will create new content) ###
-  ### The content of the clone is passed in from a hidden html input under the id element-html-content ###
-  $(".cloneable").draggable
-    connectToSortable: ".sortable"
-    helper: (el) ->
-      $  $(el.currentTarget).children('#element-html-content').val()
-    revert: "invalid"
-
   $('#edit_outlines').on 'click', '.display-editor', (event,  ui) ->
     par = $(this).parents('.element-text')
     Editor.disableAllEditors()
@@ -33,4 +25,5 @@ $ ->
 
 
   Editor.enableSortable()
+  Editor.enableToolbarDraggable()
 
