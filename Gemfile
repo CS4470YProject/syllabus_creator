@@ -64,7 +64,6 @@ group :test do
   gem 'factory_girl_rails', '~> 4.5'
   gem 'spring'
   gem 'capybara'
-  gem 'faker'
   gem 'poltergeist'
   gem 'database_cleaner'
 end
