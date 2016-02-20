@@ -1,1 +1,4 @@
-<%= @outline.id %>
+Course Code: <%= @outline.course.code %> </br>
+<% @outline.elements.each do |element| %>
+  <%= element.text.html_safe %>
+<% end %>

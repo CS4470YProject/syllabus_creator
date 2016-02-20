@@ -1,0 +1,21 @@
+<div class="btn-group-vertical outline-toolbar">
+
+  <!-- This is where we will populate toolbar content
+        <%# @toolbar_elements.each do |out| %>
+        <div id="create-paragraph" class="tool draggable">
+          <label>
+             *Toolbar item title*
+             We'll want some field to say if it is cloneable or not
+          </label>
+        </div>
+        <%# end %> -->
+  <!-- this tooldbar element demonstrates passing html content to jquery via hidden input -->
+  <div class="tool draggable cloneable">
+    <label> Cloneable Element </label>
+    <input class="element-html-content" hidden="true" value="<div class='element-edit'><h3>Heading</h3><p>New content element from rails!</p><input hidden='true' class='element-order'/></div>"/>
+  </div>
+  <div class="tool draggable cloneable">
+    <label> Cloneable Show Index </label>
+    <input class="element-html-content" hidden="true" value="<div class='element-edit'><h3>Heading</h3><p>New content element from rails!</p><input class='element-order'/></div>"/>
+  </div>
+</div>

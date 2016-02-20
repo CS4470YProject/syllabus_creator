@@ -1,6 +1,7 @@
 FactoryGirl.define do
-  factory :department do
+  factory :category do
     name 'computer science'
+    faculty
   end
 
 end

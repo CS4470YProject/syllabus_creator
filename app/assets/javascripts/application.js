@@ -13,9 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/autocomplete
+//= require jquery-ui
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require bootstrap-switch
 //= require chosen-jquery
 //= require scaffold
 //= require smart_poll
 //= require autocomplete-rails
+//= require ckeditor-jquery
+//= require editor
+//= require outlines

@@ -41,6 +41,9 @@ feature 'Outline' do
     before(:each) do
       @template = FactoryGirl.create(:template)
       @user  = FactoryGirl.create(:user, :instructor)
+      category = @template.category
+      faculty = category.faculty
+      @senate_rule = FactoryGirl.create(:senate_rule, faculty: faculty)
       visit root_path
       find_by_id('login-link').click
       fill_in('user_email', with: @user.email)
@@ -52,6 +55,8 @@ feature 'Outline' do
       fill_in('course_course_code', with: 'cs4470')
       select_from_chosen(@template.department_name, from: 'outline_parent_id')
       click_button 'Create Outline'
+      expect(page).to have_content(@senate_rule.description)
+      click_button 'Continue'
       expect(page).to have_content('Processing')
       expect(page).to have_content('cs4470')
     end

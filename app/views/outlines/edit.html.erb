@@ -1,1 +1,19 @@
 Course Code: <%= @outline.course.code %>
+<div id="edit_outlines" class="container-fluid outline-editor">
+  <tr>
+    <%= render 'outlines/partials/edit_toolbar', outline: @outline %>
+    <%= render 'outlines/partials/edit_element', outline: @outline %>
+  </tr>
+</div>
+
+
+<%#= javascript_include_tag 'outlines', 'data-turbolinks-track' => true %>
+
+<!--<div class="container-fluid outline-edit-container">-->
+  <!--<div id="outside-form">-->
+    <!--&lt;!&ndash; we may need to throw all content that doesn't belong to the outline object here on submit &ndash;&gt;-->
+    <!--&lt;!&ndash; issue is we need the form page to respond to elements being dragged onto it &ndash;&gt;-->
+  <!--</div>-->
+  <!--<h2 class="outline-edit-title"> Outline Editor - <%= @outline.course.code %> </h2>-->
+  <!--<%#= render 'outlines/partials/draggable_edit_element', outline: @outline  %>-->
+<!--</div>-->

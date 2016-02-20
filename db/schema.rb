@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151219034127) do
+ActiveRecord::Schema.define(version: 20160128193516) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "faculty_id", limit: 4
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string   "code",        limit: 255
@@ -37,12 +44,6 @@ ActiveRecord::Schema.define(version: 20151219034127) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "departments", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "element_rules", force: :cascade do |t|
     t.integer  "element_id", limit: 4
     t.integer  "rule_id",    limit: 4
@@ -54,8 +55,16 @@ ActiveRecord::Schema.define(version: 20151219034127) do
   add_index "element_rules", ["rule_id"], name: "index_element_rules_on_rule_id", using: :btree
 
   create_table "elements", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.text     "text",       limit: 65535
+  end
+
+  create_table "faculties", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "parent_id",  limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "job_messengers", force: :cascade do |t|
@@ -80,13 +89,13 @@ ActiveRecord::Schema.define(version: 20151219034127) do
   add_index "outline_elements", ["outline_id"], name: "index_outline_elements_on_outline_id", using: :btree
 
   create_table "outlines", force: :cascade do |t|
-    t.integer  "user_id",       limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "course_id",     limit: 4
-    t.string   "type",          limit: 255
-    t.integer  "parent_id",     limit: 4
-    t.integer  "department_id", limit: 4
+    t.integer  "user_id",     limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "course_id",   limit: 4
+    t.string   "type",        limit: 255
+    t.integer  "parent_id",   limit: 4
+    t.integer  "category_id", limit: 4
   end
 
   add_index "outlines", ["course_id"], name: "index_outlines_on_course_id", using: :btree
@@ -99,8 +108,19 @@ ActiveRecord::Schema.define(version: 20151219034127) do
   end
 
   create_table "rules", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "immutable",  default: false
+    t.boolean  "required",   default: false
+  end
+
+  create_table "senate_rules", force: :cascade do |t|
+    t.integer  "faculty_id",  limit: 4
+    t.integer  "element_id",  limit: 4
+    t.string   "name",        limit: 255
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "user_roles", force: :cascade do |t|

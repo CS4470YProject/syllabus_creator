@@ -45,8 +45,8 @@ body {
 
 .footer {
   height: 75px;
-  width: 80%;
-  position: absolute;
+  width: 100%;
+  position: relative;
   bottom: 0;
 }
 
@@ -181,6 +181,11 @@ fieldset[disabled] .btn-western.focus {
 .btn-western .badge {
   color: $western-purple;
   background-color: #fff;
+}
+.form-control {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
 }
 
 /* END Western Button */

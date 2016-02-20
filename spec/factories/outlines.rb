@@ -4,7 +4,7 @@ FactoryGirl.define do
   end
 
   factory :template, parent: :outline, class: 'Template' do
-    department
+    category
     course nil
   end
 
