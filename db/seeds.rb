@@ -39,6 +39,12 @@ e_ri_oe = OutlineElement.create(outline: template_cs, element: element_required_
 
 template_cs.outline_elements << e_i_oe << e_r_oe << e_ri_oe
 
+tool = Tool.create(faculty: faculty_western, element: element_immutable, name: "This is a tool")
+faculty_western.tools << tool
+element_immutable.tools << tool
+
+
+
 Rake::Task['db:seed_senate_rules'].invoke
 
 # cs4470 = Course.create(code: 'cs4470')
