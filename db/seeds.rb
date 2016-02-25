@@ -28,16 +28,27 @@ required = Rule.create(required: true)
 
 element_immutable = Element.create(text: "This is an immutable element: #{Faker::Lorem.paragraph(6)}")
 element_immutable.rules << immutable
+element_immutable.create_header(text: 'This is an immutable element', size: 24, bold: true)
 element_required = Element.create(text: "This is a required element: #{Faker::Lorem.paragraph(6)}")
 element_required.rules << required
+element_required.create_header(text: 'This is a required element', size: 24, underline: true)
 element_required_immutable = Element.create(text: "This is an immutable required element: #{Faker::Lorem.paragraph(6)}")
 element_required_immutable.rules << immutable << required
+element_required_immutable.create_header(text: 'This is an immutable required element', size: 24, italic: true)
 
-e_i_oe = OutlineElement.create(outline: template_cs, element: element_immutable, order: 1)
-e_r_oe = OutlineElement.create(outline: template_cs, element: element_required, order: 2)
-e_ri_oe = OutlineElement.create(outline: template_cs, element: element_required_immutable, order: 3)
+group_1 = ElementGroup.create(rank: 0, outline: template_cs)
+group_1.elements << element_immutable
+group_1.elements << element_required
+group_1.create_header(text: 'Group Header', size: 30, bold: true, underline: true)
+group_2 = ElementGroup.create(rank: 1, outline: template_cs)
+group_2.elements << element_required_immutable
+group_2.create_header(text: 'Group 2 Header', size: 30, bold: true, underline: true)
+# e_i_oe = OutlineElement.create(outline: template_cs, element: element_immutable, order: 1)
+# e_r_oe = OutlineElement.create(outline: template_cs, element: element_required, order: 2)
+# e_ri_oe = OutlineElement.create(outline: template_cs, element: element_required_immutable, order: 3)
 
-template_cs.outline_elements << e_i_oe << e_r_oe << e_ri_oe
+#template_cs.outline_elements << e_i_oe << e_r_oe << e_ri_oe
+template_cs.element_groups
 
 Rake::Task['db:seed_senate_rules'].invoke
 

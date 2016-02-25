@@ -1,0 +1,23 @@
+<%# removal code %>
+<%# edit code %>
+<div class="element-text">
+  <% unless object.required? %>
+    <%#= link_to outline_remove_element_path(outline_id: outline.id, outline_element_id: f_oe.object.id), class: 'close', method: :post, remote: true do %>&times<%# end %>
+  <% end %>
+  <div class="html-element-header <%= header_class(object.header) %>">
+    <%= object.header.text %>
+  </div>
+  <div class="html-element">
+    <div class="html-element-text">
+      <%= object.text.try(:html_safe) %>
+    </div>
+    <% unless object.immutable? %> <a href="#" class="display-editor"><span>...Click to edit</span></a> <% end %>
+  </div>
+  <% if object.immutable? %>
+  <% else %>
+    <div class="ckeditor-element hidden">
+      <%= f_e.text_area :text, class: 'ckeditor' %>
+      <a href="#" class="hide-editor"><span>...Click to hide</span></a>
+    </div>
+  <% end %>
+</div>

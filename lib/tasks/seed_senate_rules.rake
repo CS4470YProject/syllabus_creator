@@ -23,6 +23,13 @@ namespace :db do
         graded_labs: "Graded Lab Policy: #{Faker::Lorem.paragraph(6)}",
         equipment_handling: "Equipment Handling Policy: #{Faker::Lorem.paragraph(6)}"
     }
+    elements_headers = {
+        turnitin: 'Anti-Plagiarism Policy',
+        ssc_funding: 'Science Student Council Funding',
+        clickers: 'Clicker Policy',
+        graded_labs: 'Lab Grading Policy',
+        equipment_handling: 'Equipment Handling Policy'
+    }
     elements_rules = {
         turnitin: %w(required immutable),
         ssc_funding: %w(required immutable),
@@ -35,6 +42,7 @@ namespace :db do
       ActiveRecord::Base.transaction do
         faculty = Faculty.where(name: fac).first
         element = Element.create(text: elements_text[rule])
+        element.create_header(text: elements_headers[rule], size: 24, bold: true)
         elements_rules[rule].each do |r|
           element.rules <<  Rule.where(r => true).first
         end

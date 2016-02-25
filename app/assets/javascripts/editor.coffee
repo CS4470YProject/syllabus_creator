@@ -34,12 +34,20 @@ class @Editor
       $(event).children(".element-order").val pos++
 
   this.enableSortable = ->
-    $('.sortable').sortable
+    $('.element-group-list').sortable
       revert: true,
       start: (event, ui) ->
         Editor.disableEditor($(ui.item).children('.element-text'))
       stop: (event, ui) ->
         Editor.updateOrder(0)
+      connectWith: '.element-group-list',
+      beforeStop: (ev, ui) ->
+        if( $(ui.item).hasClass('element-group') && $(ui.placeholder).parent()[0] != this )
+          $(this).sortable('cancel')
+    $('.elements').sortable
+      connectWith: '.elements',
+      stop: (event, ui) ->
+        console.log 'asdasd'
 
   this.enableToolbarDraggable = ->
     ### Define 'create' elements here (elements that when dragged will create new content) ###

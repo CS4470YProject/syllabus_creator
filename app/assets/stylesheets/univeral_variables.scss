@@ -49,6 +49,15 @@ $dark-gray: #a9a9a9;
 @for $i from 6 through 60 {
   .font-#{$i} { font-size: #{$i}px; }
 }
+.bold {
+  font-weight: bold;
+}
+.italic {
+  font-style: italic;
+}
+.underline {
+  text-decoration: underline;
+}
 
 // Default Fonts
 $font-family-base: 'Open Sans', sans-serif;

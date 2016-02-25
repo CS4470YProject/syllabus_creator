@@ -5,11 +5,15 @@ class Outline < ActiveRecord::Base
   belongs_to :user
   belongs_to :course
   belongs_to :parent, class_name: 'Template'
-  has_many :outline_elements, -> { order(order: :asc )}, dependent: :destroy
-  has_many :elements, through: :outline_elements
+  # has_many :outline_elements, -> { order(order: :asc )}, dependent: :destroy
+  # has_many :elements, through: :outline_elements
+  has_many :element_groups, -> { order(rank: :asc)}, dependent: :destroy
+  has_many :elements, through: :element_groups
+  has_many :senate_rules, through: :elements
 
   default_scope { where(type: 'Outline') }
-  accepts_nested_attributes_for :outline_elements, allow_destroy: true
+  #accepts_nested_attributes_for :outline_elements, allow_destroy: true
+  accepts_nested_attributes_for :element_groups, allow_destroy: true
 
   scope :sorted_by, -> (sort_option) {
                     # extract the sort direction from the param value.

@@ -1,0 +1,18 @@
+<div class="outline-view">
+  <%= form_for outline, url: outline_path(outline), method: :put, remote: true do |f| %>
+    <div class="element-group-list">
+      <%= f.fields_for :element_groups do |f_eg| %>
+        <div class="element-group">
+          <div class="element-group-header <%= header_class(f_eg.object.header) %>">
+            <%= f_eg.object.header.text %>
+          </div>
+          <div class="elements">
+            <%= f_eg.fields_for :elements do |f_e| %>
+              <%= render 'elements/text_element', object: f_e.object, f_e: f_e %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
