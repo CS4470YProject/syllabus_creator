@@ -16,11 +16,11 @@ RSpec.describe Tool, type: :model do
     end
     describe 'search query' do
       it 'should return the tools for the given faculty' do
-        tools = Tool.search_query('science')
+        tools = Tool.search_query(1)
         expect(tools.size).to eq(2)
-        tools = Tool.search_query('engineering')
+        tools = Tool.search_query(2)
         expect(tools.size).to eq(1)
-        tools = Tool.search_query('health sciences')
+        tools = Tool.search_query(3)
         expect(tools.size).to eq(0)
       end
       it 'should return nothing if given empty string' do
