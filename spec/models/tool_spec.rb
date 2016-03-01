@@ -14,17 +14,17 @@ RSpec.describe Tool, type: :model do
       @tool2 = FactoryGirl.create(:tool, faculty: faculty)
       @tool3 = FactoryGirl.create(:tool, faculty: faculty2)
     end
-    describe 'search query' do
+    describe 'list query' do
       it 'should return the tools for the given faculty' do
-        tools = Tool.search_query(1)
+        tools = Tool.list_query(1)
         expect(tools.size).to eq(2)
-        tools = Tool.search_query(2)
+        tools = Tool.list_query(2)
         expect(tools.size).to eq(1)
-        tools = Tool.search_query(3)
+        tools = Tool.list_query(3)
         expect(tools.size).to eq(0)
       end
       it 'should return nothing if given empty string' do
-        tools = Tool.search_query(' ')
+        tools = Tool.list_query(' ')
         expect(tools.size).to eq(0)
       end
     end
