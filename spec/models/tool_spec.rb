@@ -23,10 +23,6 @@ RSpec.describe Tool, type: :model do
         tools = Tool.list_query(3)
         expect(tools.size).to eq(0)
       end
-      it 'should return nothing if given empty string' do
-        tools = Tool.list_query(' ')
-        expect(tools.size).to eq(0)
-      end
     end
   end
 
