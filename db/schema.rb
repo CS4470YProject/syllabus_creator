@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220194621) do
+ActiveRecord::Schema.define(version: 20160315071243) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -61,12 +61,22 @@ ActiveRecord::Schema.define(version: 20160220194621) do
   add_index "element_rules", ["element_id"], name: "index_element_rules_on_element_id", using: :btree
   add_index "element_rules", ["rule_id"], name: "index_element_rules_on_rule_id", using: :btree
 
+  create_table "elementests", force: :cascade do |t|
+    t.text     "caption",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "elements", force: :cascade do |t|
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-    t.text     "text",             limit: 65535
-    t.integer  "rank",             limit: 4,     default: 0
-    t.integer  "element_group_id", limit: 4
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.text     "text",               limit: 65535
+    t.integer  "rank",               limit: 4,     default: 0
+    t.integer  "element_group_id",   limit: 4
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
   end
 
   create_table "faculties", force: :cascade do |t|
@@ -88,6 +98,11 @@ ActiveRecord::Schema.define(version: 20160220194621) do
     t.integer  "element_group_id", limit: 4
   end
 
+  create_table "images", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "job_messengers", force: :cascade do |t|
     t.string   "job_id",     limit: 255
     t.string   "status",     limit: 255
@@ -99,11 +114,15 @@ ActiveRecord::Schema.define(version: 20160220194621) do
   add_index "job_messengers", ["job_id"], name: "index_job_messengers_on_job_id", using: :btree
 
   create_table "outline_elements", force: :cascade do |t|
-    t.integer  "outline_id", limit: 4
-    t.integer  "element_id", limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.integer  "order",      limit: 4
+    t.integer  "outline_id",         limit: 4
+    t.integer  "element_id",         limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "order",              limit: 4
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
   end
 
   add_index "outline_elements", ["element_id"], name: "index_outline_elements_on_element_id", using: :btree
@@ -144,6 +163,17 @@ ActiveRecord::Schema.define(version: 20160220194621) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "tools", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "faculty_id", limit: 4
+    t.integer  "element_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "tools", ["element_id"], name: "index_tools_on_element_id", using: :btree
+  add_index "tools", ["faculty_id"], name: "index_tools_on_faculty_id", using: :btree
+
   create_table "user_roles", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.integer  "role_id",    limit: 4
@@ -174,4 +204,6 @@ ActiveRecord::Schema.define(version: 20160220194621) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "tools", "elements"
+  add_foreign_key "tools", "faculties"
 end

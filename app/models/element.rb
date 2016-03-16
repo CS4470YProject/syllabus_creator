@@ -5,6 +5,9 @@ class Element < ActiveRecord::Base
   has_one :header
   has_one :senate_rule
 
+  # Image uploader
+  mount_uploader :image, ImageUploader
+
   def copy_and_save
     new_element = dup
     element_rules.each do |e_r|

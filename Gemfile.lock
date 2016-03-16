@@ -96,6 +96,11 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     chosen-rails (1.4.1)
       coffee-rails (>= 3.2)
       compass-rails (>= 1.1.2)
@@ -178,6 +183,7 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.6.2)
+    mini_magick (4.4.0)
     mini_portile (0.6.2)
     minitest (5.8.1)
     multi_json (1.11.2)
@@ -324,6 +330,7 @@ DEPENDENCIES
   capistrano-safe-deploy-to (~> 1.1.1)
   capistrano-unicorn-nginx (~> 3.2.0)
   capybara
+  carrierwave (~> 0.10.0)
   chosen-rails (~> 1.4.1)
   ckeditor_rails
   coffee-rails (~> 4.1.0)
@@ -341,6 +348,7 @@ DEPENDENCIES
   jquery-slick-rails (~> 1.5.6)
   jquery-ui-rails (~> 5.0.5)
   launchy (~> 2.4.3)
+  mini_magick (~> 4.3)
   mysql2 (~> 0.3.20)
   poltergeist
   railroady (~> 1.4.0)
@@ -361,4 +369,4 @@ DEPENDENCIES
   yajl-ruby
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

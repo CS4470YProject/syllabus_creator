@@ -23,6 +23,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 gem 'unicorn', '~> 4.9.0'
 
+#For file/image upload
+gem 'carrierwave', '~> 0.10.0'
+gem 'mini_magick', '~> 4.3'
+
 gem 'twitter-bootstrap-rails', '~> 3.2.0'
 gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'arel-helpers', '~> 2.1.0'
@@ -43,6 +47,7 @@ gem 'yajl-ruby'
 gem 'ckeditor_rails'
 gem 'bootstrap-switch-rails'
 gem 'faker'
+
 
 group :development do
   gem 'capistrano-rails', '~> 1.1.3'
