@@ -66,7 +66,7 @@ class OutlinesController < ApplicationController
   private
 
   def outline_params
-    params.require(:outline).permit(:course_id, :parent_id, outline_elements_attributes:[:id, :order, element_attributes:[:id, :text]])
+    params.require(:outline).permit(:course_id, :parent_id, header_attributes:[:text, :bold, :italic, :underline, :size], element_groups_attributes:[:id, :rank, elements_attributes:[:id, :text, :rank, header_attributes:[:text, :bold, :italic, :underline, :size]]])
   end
   def senate_rules
     params.require(:senate_rules)

@@ -2,17 +2,40 @@
   <%= form_for outline, url: outline_path(outline), method: :put, remote: true do |f| %>
     <div class="element-group-list">
       <%= f.fields_for :element_groups do |f_eg| %>
-        <div class="element-group">
+        <div class="element-group list">
           <div class="element-group-header <%= header_class(f_eg.object.header) %>">
             <%= f_eg.object.header.text %>
           </div>
           <div class="elements">
             <%= f_eg.fields_for :elements do |f_e| %>
-              <%= render 'elements/text_element', object: f_e.object, f_e: f_e %>
+              <div class="element-text list">
+              <%= f_e.fields_for :header do |f_h| %>
+                <div class="row">
+                  <div class="html-element-header <%= header_class(f_e.object.header) %> col-md-8">
+                    <%= f_h.text_field :text, class: 'header-edit' %>
+                  </div>
+                  <div class="col-md-4">
+                    <%= f_h.label :bold %>
+                    <%= f_h.check_box :bold %>
+                    <%= f_h.label :italic %>
+                    <%= f_h.check_box :italic %>
+                    <%= f_h.label :underline %>
+                    <%= f_h.check_box :underline %>
+                    <%= f_h.select :size, options_for_select(Header.select_options, f_h.object.size) %>
+                  </div>
+                </div>
+              <% end %>
+
+                <%= render 'elements/text_element', object: f_e.object, f_e: f_e %>
+                <%= f_e.hidden_field :rank, class: 'list-rank' %>
+              </div>
             <% end %>
+            &nbsp
           </div>
+          <%= f_eg.hidden_field :rank, class: 'list-rank' %>
         </div>
       <% end %>
     </div>
+    <%= f.submit %>
   <% end %>
 </div>

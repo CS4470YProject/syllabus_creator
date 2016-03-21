@@ -4,6 +4,7 @@ class Element < ActiveRecord::Base
   has_many :rules, through: :element_rules
   has_one :header
   has_one :senate_rule
+  accepts_nested_attributes_for :header
 
   # Image uploader
   mount_uploader :image, ImageUploader
