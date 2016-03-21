@@ -4,6 +4,7 @@ class ElementGroup < ActiveRecord::Base
   belongs_to :outline
 
   accepts_nested_attributes_for :elements, allow_destroy: true
+  accepts_nested_attributes_for :header
 
   before_create :set_rank
 

@@ -26,13 +26,13 @@ template_cs = Template.create(category: category_cs)
 immutable = Rule.create(immutable: true)
 required = Rule.create(required: true)
 
-element_immutable = Element.create(text: "This is an immutable element: #{Faker::Lorem.paragraph(6)}")
+element_immutable = Element.create(text: "This is an immutable element: #{Faker::Lorem.paragraph(6)}", rank: 0)
 element_immutable.rules << immutable
 element_immutable.create_header(text: 'This is an immutable element', size: 24, bold: true)
-element_required = Element.create(text: "This is a required element: #{Faker::Lorem.paragraph(6)}")
+element_required = Element.create(text: "This is a required element: #{Faker::Lorem.paragraph(6)}", rank: 1)
 element_required.rules << required
 element_required.create_header(text: 'This is a required element', size: 24, underline: true)
-element_required_immutable = Element.create(text: "This is an immutable required element: #{Faker::Lorem.paragraph(6)}")
+element_required_immutable = Element.create(text: "This is an immutable required element: #{Faker::Lorem.paragraph(6)}", rank: 0)
 element_required_immutable.rules << immutable << required
 element_required_immutable.create_header(text: 'This is an immutable required element', size: 24, italic: true)
 

@@ -28,26 +28,31 @@ class @Editor
   this.submitForm = ->
     $('.edit_outline').submit()
 
-  this.updateOrder  = ->
+  this.updateOrder = (parent) ->
     pos = 0
-    $.map $(".element-edit"), (event) ->
-      $(event).children(".element-order").val pos++
+    $.map $(parent).children(".list"), (event) ->
+      $(event).children(".list-rank").val pos++
 
   this.enableSortable = ->
     $('.element-group-list').sortable
       revert: true,
       start: (event, ui) ->
-        Editor.disableEditor($(ui.item).children('.element-text'))
+        console.log $(ui.item)
+        Editor.disableEditor($(ui.item).children('.elements').children('.element-text'))
       stop: (event, ui) ->
-        Editor.updateOrder(0)
+        Editor.updateOrder(ui.item.parent())
+        Editor.submitForm()
       connectWith: '.element-group-list',
       beforeStop: (ev, ui) ->
         if( $(ui.item).hasClass('element-group') && $(ui.placeholder).parent()[0] != this )
           $(this).sortable('cancel')
     $('.elements').sortable
       connectWith: '.elements',
+      start: (event, ui) ->
+        Editor.disableEditor($(ui.item))
       stop: (event, ui) ->
-        console.log 'asdasd'
+        Editor.updateOrder(ui.item.parent())
+        Editor.submitForm()
 
   this.enableToolbarDraggable = ->
     ### Define 'create' elements here (elements that when dragged will create new content) ###
