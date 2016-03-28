@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :elements
+  resources :image_attachments
   resources :elementests
   devise_for :users
   get 'login' => 'sessions#new'
