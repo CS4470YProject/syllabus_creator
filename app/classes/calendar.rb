@@ -19,8 +19,7 @@ class Calendar
 
     uri = @base_uri
     uri.query = URI.encode_www_form(params)
-    hash = JSON.parse(Net::HTTP.get_response(uri).body)
-    return hash
+    JSON.parse(Net::HTTP.get_response(uri).body)
   end
 
   def getSubjects(career, term)
@@ -29,8 +28,7 @@ class Calendar
 
     uri = @base_uri
     uri.query = URI.encode_www_form(params)
-    hash = JSON.parse(Net::HTTP.get_response(uri).body)
-    return hash
+    JSON.parse(Net::HTTP.get_response(uri).body)
   end
 
 end
