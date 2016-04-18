@@ -17,6 +17,13 @@ Rails.application.routes.draw do
     end
   end
 
+  #TODO: add routes for adding, updating, and removing tools
+  resources :tools, only: %w() do
+    collection do
+      get :search
+    end
+  end
+
   resources :courses, only: %w() do
     get :autocomplete_course_code, on: :collection
   end

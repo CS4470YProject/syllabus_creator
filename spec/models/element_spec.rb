@@ -5,5 +5,6 @@ RSpec.describe Element, type: :model do
     it { should have_many(:outline_elements) }
     it { should have_many(:element_rules) }
     it { should have_many(:rules) }
+    it { should have_many(:tools) }
   end
 end

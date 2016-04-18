@@ -1,6 +1,7 @@
 class Element < ActiveRecord::Base
   has_many :outline_elements, dependent: :destroy
   has_many :element_rules, dependent: :destroy
+  has_many :tools, dependent: :destroy
   has_many :rules, through: :element_rules
   has_one :header
   has_one :senate_rule
