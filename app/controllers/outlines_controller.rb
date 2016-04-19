@@ -63,6 +63,14 @@ class OutlinesController < ApplicationController
     @outline_element_id = params[:outline_element_id]
   end
 
+  # returns list of tools belonging to outline's faculty after adding a new one
+  def create_tool_and_element
+    # TODO: validate input
+    @outline = Outline.where(id: params[:outline_id]).first
+    @outline.add_tool_and_element(params[:header], params[:outline_content], params[:tool_name])
+    Tool.where(faculty_id: @outline.faculty.id)
+  end
+
   private
 
   def outline_params

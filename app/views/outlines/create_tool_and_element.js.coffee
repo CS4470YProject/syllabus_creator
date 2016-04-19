@@ -1,0 +1,2 @@
+$('#tool-submit').click ->
+  return

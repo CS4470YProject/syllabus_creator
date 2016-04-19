@@ -78,4 +78,16 @@ class Outline < ActiveRecord::Base
     end
   end
 
+  def add_tool_and_element(header, outline_content, tool_name )
+    element = Element.create(text: outline_content, rank: -1)
+    element.create_header(text: header.text,
+                          size: header.size,
+                          bold: header.bold,
+                          italic: header.italic,
+                          underline: header.underline
+    )
+
+    Tool.insert(tool_name, element.id, parent.category.faculty.id)
+  end
+
 end

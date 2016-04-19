@@ -1,0 +1,40 @@
+<div id="tool-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- change to normal form, set fields_for for tool as well, use normal submit -->
+      <%= form_for outline, url: outline_create_tool_and_element_path(@outline), method: :post do |f| %>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3 class="modal-title">Add Toolbar Element</h3>
+          </div>
+          <div class="modal-body">
+            <h4> Tool Title: </h4>
+            <div></div>
+
+            <%= f.fields_for :element do |f_e| %>
+                <!-- header stuff needs to go here -->
+
+                <h4> Element Content: </h4>
+                <div class="element-text">
+                  <div class="html-element">
+                    <div class="html-element-text">
+                    </div>
+                    <a href="#" class="display-editor"><span>...Click to edit</span></a>
+                  </div>
+                  <div class="ckeditor-element hidden">
+                    <%= f_e.text_area :text, class: 'ckeditor' %>
+                    <a href="#" class="hide-editor"><span>...Click to hide</span></a>
+                  </div>
+                </div>
+            <%end%>
+          </div>
+          <%= f.submit 'Add', class: 'btn btn-western' %>
+      <%end%>
+
+      <div class="modal-footer">
+        <%= button_to 'Add Tool', outline_create_tool_and_element_path(outline_id: @outline.id), class: 'btn btn-western', id: 'tool-submit', remote: true %>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

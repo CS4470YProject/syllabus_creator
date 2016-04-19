@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     post :add_element
     post :remove_element
     post :clone
+    post :create_tool_and_element
     collection do
       get :search
     end

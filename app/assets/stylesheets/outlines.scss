@@ -113,6 +113,15 @@ html,body {
   background-color: $light-gray;
 }
 
+.tool-add {
+  color: green;
+  margin: 7px;
+}
+
+.tool-add:hover {
+  cursor: pointer;
+}
+
 .tool:hover, .tool:focus {
   color: $dark-gray;
   border-color: $dark-gray;

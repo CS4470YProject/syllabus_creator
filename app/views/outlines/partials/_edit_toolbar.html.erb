@@ -1,4 +1,5 @@
 <div class="btn-group-vertical outline-toolbar">
+  <span id="tool-add" class="glyphicon glyphicon-plus tool-add" data-toggle="modal" data-target="#tool-modal"></span>
 
   <!-- This is where we will populate toolbar content
         <%# @toolbar_elements.each do |out| %>
@@ -18,4 +19,5 @@
     <label> Cloneable Show Index </label>
     <input class="element-html-content" hidden="true" value="<div class='element-edit'><h3>Heading</h3><p>New content element from rails!</p><input class='element-order'/></div>"/>
   </div>
+  <%= render 'outlines/partials/edit_toolbar_create', outline: @outline %>
 </div>
