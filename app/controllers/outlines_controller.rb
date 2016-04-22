@@ -35,7 +35,7 @@ class OutlinesController < ApplicationController
   end
 
   def edit
-
+    @outline_tools = Tool.list_query(@outline.parent.faculty.id)
   end
 
   def search
@@ -57,18 +57,33 @@ class OutlinesController < ApplicationController
     @element = @outline.add_element(5) #Change this
   end
 
+  def add_tool_element
+    @outline = Outline.find(params[:outline_id])
+    @outline.add_existing_element(params[:outline][:element][:element_id],
+                                  params[:outline][:element][:rank],
+                                  params[:outline][:element_group][:rank])
+
+    redirect_to action: 'edit', id: params[:outline_id]
+  end
+
   def remove_element
     outline_element = OutlineElement.where(id: params[:outline_element_id].to_i).first
     outline_element.destroy
     @outline_element_id = params[:outline_element_id]
   end
 
-  # returns list of tools belonging to outline's faculty after adding a new one
+  # adds new tool and corresponding element that it creates
   def create_tool_and_element
-    # TODO: validate input
-    @outline = Outline.where(id: params[:outline_id]).first
-    @outline.add_tool_and_element(params[:header], params[:outline_content], params[:tool_name])
-    Tool.where(faculty_id: @outline.faculty.id)
+    if params[:outline][:element][:text].blank? || params[:outline][:tool][:name].blank?
+      redirect_to :back
+      return
+      # TODO: Have a detailed error message returned. UI validation would be nice as well
+    end
+    @outline = Outline.find(params[:outline_id])
+    @outline.add_tool_and_element(params[:outline][:element][:header],
+                                  params[:outline][:element][:text],
+                                  params[:outline][:tool][:name])
+    redirect_to :back
   end
 
   private

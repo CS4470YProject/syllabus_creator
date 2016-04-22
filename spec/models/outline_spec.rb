@@ -60,6 +60,18 @@ RSpec.describe Outline, type: :model do
         expect(element.header.italic).to eq(header.italic)
         expect(element.header.underline).to eq(header.underline)
       end
+
+      it 'should succeed if the header is empty and generate an empty header' do
+        tool_name = 'test_tool'
+        outline_content = 'test content'
+        header = nil
+        tool = @outline.add_tool_and_element(header, outline_content, tool_name)
+
+        expect(tool.name).to eq(tool_name)
+        expect(tool.faculty_id).to eq(@faculty.id)
+        element = Element.find(tool.element_id)
+        expect(element.header).to_not be_nil
+      end
     end
   end
 end

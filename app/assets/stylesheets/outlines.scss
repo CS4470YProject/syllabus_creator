@@ -132,6 +132,11 @@ html,body {
   cursor: -webkit-grabbing;
 }
 
+.toolbar-header-options {
+  display: block;
+  padding: 2px 2px 2px 2px;
+}
+
 .element-edit {
   min-height: 100px;
   border: 2px solid $western-purple;

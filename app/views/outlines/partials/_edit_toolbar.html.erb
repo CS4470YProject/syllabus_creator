@@ -1,23 +1,30 @@
 <div class="btn-group-vertical outline-toolbar">
   <span id="tool-add" class="glyphicon glyphicon-plus tool-add" data-toggle="modal" data-target="#tool-modal"></span>
 
-  <!-- This is where we will populate toolbar content
-        <%# @toolbar_elements.each do |out| %>
-        <div id="create-paragraph" class="tool draggable">
-          <label>
-             *Toolbar item title*
-             We'll want some field to say if it is cloneable or not
-          </label>
+        <% @outline_tools.each do |o_t| %>
+
+        <div class="tool draggable cloneable">
+          <label> <%= o_t.name %> </label>
+          <!-- have the content be previewed on drag. The header won't be 100% accurate -->
+          <input class="element-html-content" hidden="true" value="<div id='new_element' class='element-text list'>
+          <h3> <%= o_t.element.header.text %> </h3>
+          <%= o_t.element.text %>
+           <input class='list-rank' hidden='true'>
+           <input class='element-id' hidden='true' value=<%= o_t.element.id %> >
+          </div>">
         </div>
-        <%# end %> -->
-  <!-- this tooldbar element demonstrates passing html content to jquery via hidden input -->
-  <div class="tool draggable cloneable">
-    <label> Cloneable Element </label>
-    <input class="element-html-content" hidden="true" value="<div class='element-edit'><h3>Heading</h3><p>New content element from rails!</p><input hidden='true' class='element-order'/></div>"/>
-  </div>
-  <div class="tool draggable cloneable">
-    <label> Cloneable Show Index </label>
-    <input class="element-html-content" hidden="true" value="<div class='element-edit'><h3>Heading</h3><p>New content element from rails!</p><input class='element-order'/></div>"/>
+        <% end %>
+  <div id="add_tool_element">
+  <%= form_for outline, url: outline_add_tool_element_path(@outline), method: :post do |f| %>
+      <%= f.fields_for :element do |f_e| %>
+            <%= f_e.hidden_field :element_id, class: 'element-id' %>
+            <%= f_e.hidden_field :rank, class: 'list-rank' %>
+      <%end%>
+        <%= f.fields_for :element_group do |f_eg| %>
+            <%= f_eg.hidden_field :rank, class: 'group-rank' %>
+            <% end %>
+        <%= f.submit hidden: true %>
+  <% end %>
   </div>
   <%= render 'outlines/partials/edit_toolbar_create', outline: @outline %>
 </div>
