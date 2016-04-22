@@ -50,6 +50,8 @@ group_2.create_header(text: 'Group 2 Header', size: 30, bold: true, underline: t
 #template_cs.outline_elements << e_i_oe << e_r_oe << e_ri_oe
 template_cs.element_groups
 
+Tool.insert('test tool', element_immutable.id, faculty_science.id)
+
 tool = Tool.create(faculty: faculty_western, element: element_immutable, name: "This is a tool")
 faculty_western.tools << tool
 element_immutable.tools << tool
