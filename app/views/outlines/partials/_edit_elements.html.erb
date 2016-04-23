@@ -3,30 +3,40 @@
     <div class="element-group-list">
       <%= f.fields_for :element_groups do |f_eg| %>
         <div class="element-group list">
-          <div class="element-group-header <%= header_class(f_eg.object.header) %>">
-            <%= f_eg.object.header.text %>
-          </div>
+          <% if f_eg.object.header %>
+            <div class="element-group-header <%= header_class(f_eg.object.header) %>">
+              <%= f_eg.object.header.text %>
+            </div>
+          <% end %>
           <div class="elements">
             <%= f_eg.fields_for :elements do |f_e| %>
-              <div class="element-text list">
+              <div class="element-text list" id="element_<%= f_e.object.id %>">
               <%= f_e.fields_for :header do |f_h| %>
                 <div class="row">
-                  <div class="html-element-header <%= header_class(f_e.object.header) %> col-md-8">
-                    <%= f_h.text_field :text, class: 'header-edit' %>
+                  <div class="html-element-header col-md-7">
+                    <%= f_h.text_field :text, class: "header-edit #{header_class(f_e.object.header)}" %>
                   </div>
-                  <div class="col-md-4">
-                    <%= f_h.label :bold %>
-                    <%= f_h.check_box :bold %>
-                    <%= f_h.label :italic %>
-                    <%= f_h.check_box :italic %>
-                    <%= f_h.label :underline %>
-                    <%= f_h.check_box :underline %>
-                    <%= f_h.select :size, options_for_select(Header.select_options, f_h.object.size) %>
+                  <div class="col-md-5">
+                    <%= f_h.label :bold do %> <span class="bold">bold</span> <% end %>
+                    <%= f_h.check_box :bold, class: 'format-checkbox', 'data-style': 'bold' %>
+                    <%= f_h.label :italic do %> <span class="italic">italic</span> <% end %>
+                    <%= f_h.check_box :italic, class: 'format-checkbox', 'data-style': 'italic' %>
+                    <%= f_h.label :underline do %> <span class="underline">underline</span> <% end %>
+                    <%= f_h.check_box :underline, class: 'format-checkbox', 'data-style': 'underline' %>
+                    <%= f_h.select :size, options_for_select(Header.select_options, f_h.object.size), {}, {class: 'format-size'} %>
                   </div>
                 </div>
               <% end %>
-
-                <%= render 'elements/text_element', object: f_e.object, f_e: f_e %>
+                <%= render 'elements/text_element', object: f_e.object, f_e: f_e, outline: outline %>
+                <% unless f_e.object.required? %>
+                  <%= link_to outline_element_path(outline_id: outline.id, id: f_e.object.id),
+                              class: 'close',
+                              method: :delete,
+                              remote: true,
+                              'data-confirm': 'Do you really want to remove this element?' do %>
+                    remove
+                  <% end %>
+                <% end %>
                 <%= f_e.hidden_field :rank, class: 'list-rank' %>
               </div>
             <% end %>

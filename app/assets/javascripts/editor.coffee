@@ -66,3 +66,22 @@ class @Editor
         Editor.disableEditor($(ui.item).children('.element-text'))
       stop: (event, ui) ->
         Editor.updateOrder(0)
+
+  this.fontStyling = ->
+    $('.format-checkbox').on 'change', ->
+      if $(this).is(':checked')
+        style = $(this).attr('data-style')
+        $(this).parents('.row').find('.header-edit').addClass(style)
+      else
+        style = $(this).attr('data-style')
+        $(this).parents('.row').find('.header-edit').removeClass(style)
+      Editor.submitForm()
+
+  this.fontSize = ->
+    $('.format-size').on 'change', ->
+      style = 'font-' + $(this).val()
+      $(this).parents('.row').find('.header-edit').removeClass( (index, css) ->
+        (css.match (/(^|\s)font-\S+/g) || []).join(' ')
+      )
+      $(this).parents('.row').find('.header-edit').addClass(style)
+      Editor.submitForm()

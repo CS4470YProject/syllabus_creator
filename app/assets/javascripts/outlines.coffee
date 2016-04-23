@@ -29,4 +29,6 @@ $ ->
 
   Editor.enableSortable()
   Editor.enableToolbarDraggable()
+  Editor.fontStyling()
+  Editor.fontSize()
 

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+    resources :elements, only: %w(destroy)
   end
 
   resources :courses, only: %w() do

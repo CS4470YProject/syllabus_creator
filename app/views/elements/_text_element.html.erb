@@ -1,8 +1,4 @@
-<%# removal code %>
 <%# edit code %>
-<% unless object.required? %>
-  <%#= link_to outline_remove_element_path(outline_id: outline.id, outline_element_id: f_oe.object.id), class: 'close', method: :post, remote: true do %>&times<%# end %>
-<% end %>
 <div class="html-element">
   <div class="html-element-text">
     <%= object.text.try(:html_safe) %>

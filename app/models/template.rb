@@ -14,8 +14,9 @@ class Template < Outline
     #TODO: API Call to Validate Course Code
     course = Course.where(code: course_code).first_or_create
     outline = Outline.new(user: user, course: course, parent: self)
-   # senate_rules = collect_senate_rules(senate_rules)
+    senate_rules = collect_senate_rules(senate_rules)
     outline = insert_elements(outline)
+    insert_senate_rules(outline, senate_rules)
     if outline.save
       outline
     else
@@ -70,7 +71,10 @@ class Template < Outline
   end
 
   def insert_senate_rules(outline, senate_rules)
-
+    senate_rules.each do |rule|
+      element_group = ElementGroup.create(outline: outline)
+      element_group.elements << rule.element
+    end
   end
 
 end
