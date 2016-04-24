@@ -1,8 +1,8 @@
-sCourse Code: <%= @outline.course.code %>
+Course Code: <%= @outline.course.code %>
 <div id="edit_outlines" class="container-fluid outline-editor">
   <tr>
     <%= render 'outlines/partials/edit_toolbar', outline: @outline %>
-    <%= render 'outlines/partials/edit_elements', outline: @outline %>
+      <%= render 'outlines/partials/edit_elements', outline: @outline, outline_tools: @outline_tools %>
   </tr>
 </div>
 

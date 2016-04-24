@@ -26,7 +26,8 @@ class @Editor
   this.reloadAllEditors = ->
 
   this.submitForm = ->
-    $('.edit_outline').submit()
+    console.log $('#edit_outline_elements').find('form')
+    $('#edit_outline_elements').find('form').submit()
 
   this.updateOrder = (parent) ->
     pos = 0
@@ -54,17 +55,30 @@ class @Editor
         Editor.updateOrder(ui.item.parent())
         Editor.submitForm()
 
+  this.addToolElement = ->
+    item = $('#new_element')
+    Editor.updateOrder(item.parent())
+    # determine if element is in a group. If so, set the group rank
+    if $(item.parent()).parent().find('.list-rank')
+      $('#add_tool_element').find('form').children('.group-rank').val $(item.parent()).parent().find('.list-rank').val()
+    console.log $(item).children('.list-rank').val()
+    $('#add_tool_element').find('form').children('.list-rank').val $(item).children('.list-rank').val()
+    $('#add_tool_element').find('form').children('.element-id').val $(item).children('.element-id').val()
+    Editor.submitForm()
+    $('#add_tool_element').find('form').submit()
+
   this.enableToolbarDraggable = ->
     ### Define 'create' elements here (elements that when dragged will create new content) ###
     ### The content of the clone is passed in from a hidden html input under the id element-html-content ###
     $(".cloneable").draggable
-      connectToSortable: ".sortable"
+      connectToSortable: ".elements"
       helper: (el) ->
         $  $(el.currentTarget).children('.element-html-content').val()
       revert: "invalid"
       start: (event, ui) ->
         Editor.disableEditor($(ui.item).children('.element-text'))
       stop: (event, ui) ->
+        Editor.addToolElement()
         Editor.updateOrder(0)
 
   this.fontStyling = ->
@@ -85,3 +99,4 @@ class @Editor
       )
       $(this).parents('.row').find('.header-edit').addClass(style)
       Editor.submitForm()
+

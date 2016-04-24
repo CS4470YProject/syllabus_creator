@@ -1,4 +1,4 @@
-<div class="outline-view">
+<div id="edit_outline_elements" class="outline-view">
   <%= form_for outline, url: outline_path(outline), method: :put, remote: true do |f| %>
     <div class="element-group-list">
       <%= f.fields_for :element_groups do |f_eg| %>
@@ -46,6 +46,6 @@
         </div>
       <% end %>
     </div>
-    <%= f.submit %>
+      <%= f.submit %>
   <% end %>
 </div>
