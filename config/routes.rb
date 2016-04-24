@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+    resources :elements, only: %w(destroy)
   end
 
   #TODO: add routes for adding, updating, and removing tools
@@ -24,7 +25,6 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
-    resources :elements, only: %w(destroy)
   end
 
   resources :courses, only: %w() do
