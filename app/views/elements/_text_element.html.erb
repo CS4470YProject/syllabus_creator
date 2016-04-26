@@ -1,0 +1,14 @@
+<%# edit code %>
+<div class="html-element">
+  <div class="html-element-text">
+    <%= object.text.try(:html_safe) %>
+  </div>
+  <% unless object.immutable? %> <a href="#" class="display-editor"><span>...Click to edit</span></a> <% end %>
+</div>
+<% if object.immutable? %>
+<% else %>
+  <div class="ckeditor-element hidden">
+    <%= f_e.text_area :text, class: 'ckeditor' %>
+    <a href="#" class="hide-editor"><span>...Click to hide</span></a>
+  </div>
+<% end %>

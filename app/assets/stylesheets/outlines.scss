@@ -113,6 +113,15 @@ html,body {
   background-color: $light-gray;
 }
 
+.tool-add {
+  color: green;
+  margin: 7px;
+}
+
+.tool-add:hover {
+  cursor: pointer;
+}
+
 .tool:hover, .tool:focus {
   color: $dark-gray;
   border-color: $dark-gray;
@@ -121,6 +130,11 @@ html,body {
 
 .tool:active {
   cursor: -webkit-grabbing;
+}
+
+.toolbar-header-options {
+  display: block;
+  padding: 2px 2px 2px 2px;
 }
 
 .element-edit {
@@ -164,4 +178,12 @@ html,body {
 }
 .element-edit:active {
   cursor: -webkit-grabbing;
+}
+
+.html-element {
+  padding-left: 20px;
+}
+
+.header-edit {
+  width: 100%;
 }

@@ -12,6 +12,16 @@ Rails.application.routes.draw do
     post :add_element
     post :remove_element
     post :clone
+    post :create_tool_and_element
+    post :add_tool_element
+    collection do
+      get :search
+    end
+    resources :elements, only: %w(destroy)
+  end
+
+  #TODO: add routes for adding, updating, and removing tools
+  resources :tools, only: %w() do
     collection do
       get :search
     end

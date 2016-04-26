@@ -13,6 +13,9 @@ class Ability
         can [:edit, :update, :add_element, :remove_element], Outline do |outline|
           user.outlines.where(id: outline.id).size > 0
         end
+        can [:destroy], Element do |element|
+          user.elements.where(id: element.id).size > 0
+        end
       end
     end
 

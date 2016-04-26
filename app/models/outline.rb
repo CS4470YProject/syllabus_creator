@@ -5,11 +5,15 @@ class Outline < ActiveRecord::Base
   belongs_to :user
   belongs_to :course
   belongs_to :parent, class_name: 'Template'
-  has_many :outline_elements, -> { order(order: :asc )}, dependent: :destroy
-  has_many :elements, through: :outline_elements
+  # has_many :outline_elements, -> { order(order: :asc )}, dependent: :destroy
+  # has_many :elements, through: :outline_elements
+  has_many :element_groups, -> { order(rank: :asc)}, dependent: :destroy
+  has_many :elements, through: :element_groups
+  has_many :senate_rules, through: :elements
 
   default_scope { where(type: 'Outline') }
-  accepts_nested_attributes_for :outline_elements, allow_destroy: true
+  #accepts_nested_attributes_for :outline_elements, allow_destroy: true
+  accepts_nested_attributes_for :element_groups, allow_destroy: true
 
   scope :sorted_by, -> (sort_option) {
                     # extract the sort direction from the param value.
@@ -68,10 +72,36 @@ class Outline < ActiveRecord::Base
     element
   end
 
+  def add_existing_element(element_id, element_rank, group_rank)
+    element = Element.find(element_id).clone
+    group = nil
+    if group_rank.blank?
+      group = ElementGroup.create(rank: element_rank, outline: Outline.find(id))
+    else
+      group = ElementGroup.where(outline_id: id, rank: group_rank).first
+      element.rank = element_rank
+    end
+    group.elements << element
+    element
+  end
+
   def destroy_elements
     elements.each do |ele|
       ele.destroy if ele.outline_elements.size <= 1
     end
+  end
+
+  def add_tool_and_element(header, outline_content, tool_name )
+    header = Header.new if header.nil?
+    element = Element.create(text: outline_content, rank: -1)
+    element.create_header(text: header[:text],
+                          size: header[:size],
+                          bold: header[:bold],
+                          italic: header[:italic],
+                          underline: header[:underline]
+    )
+
+    Tool.insert(tool_name, element.id, parent.category.faculty.id)
   end
 
 end

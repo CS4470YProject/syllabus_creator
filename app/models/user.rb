@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :user_roles
   has_many :roles, through: :user_roles
   has_many :outlines
+  has_many :elements, through: :outlines
 
   def name
     "#{first_name} #{last_name}"

@@ -3,16 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-#  #Draggable functionality. Draggable elements should have this css class
-#  $(".draggable").draggable
-#    connectToSortable: ".sortable",
-#    revert: "invalid",
-#    revertDuration: 0,
-#    start: (event, ui) ->
-#      Editor.disableEditor($(event.target).children('.element-text'))
-#    stop: (event, ui) ->
-#      setTimeout(Editor.updateOrder, 1100)
-
   $('#edit_outlines').on 'click', '.display-editor', (event,  ui) ->
     par = $(this).parents('.element-text')
     Editor.disableAllEditors()
@@ -24,8 +14,21 @@ $ ->
     Editor.submitForm()
 
   $('.toggle-check').bootstrapSwitch('state', true)
+#
+#  $('div.element-group-list').sortable({
+#    connectWith: 'div.element-group-list',
+#    beforeStop: (ev, ui) ->
+#      if( $(ui.item).hasClass('element-group') && $(ui.placeholder).parent()[0] != this )
+#        $(this).sortable('cancel')
+#  })
+
+  $('div.elements').sortable({
+    connectWith: 'div.element'
+  })
 
 
   Editor.enableSortable()
   Editor.enableToolbarDraggable()
+  Editor.fontStyling()
+  Editor.fontSize()
 
